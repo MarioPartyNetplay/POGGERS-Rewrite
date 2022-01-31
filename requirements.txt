@@ -1,0 +1,6 @@
+flask
+dadjokes
+requests
+urllib3
+aiohttp
+py-cord==2.0.0b1

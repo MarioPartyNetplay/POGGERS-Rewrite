@@ -8,7 +8,6 @@
 # MIT License https://www.mit.edu/~amini/LICENSE.md                         #
 #                                                                           #
 #***************************************************************************#
-
 import discord
 import random
 import os
@@ -17,10 +16,10 @@ import aiohttp
 import box
 import platform
 import requests
+import urllib
 
 from dadjokes import Dadjoke
 from discord.ext import commands
-from discord.ext.commands import CommandNotFound
 from keep_alive import keep_alive
 
 #Variables
@@ -31,7 +30,7 @@ intents = discord.Intents.default()
 intents.members = True
 
 #Define Client
-client = commands.Bot(description="Doopliss", command_prefix="!", intents=intents, activity=discord.Game(name='around with different names'))
+client = commands.Bot(description="Doopliss", command_prefix="/", intents=intents, activity=discord.Game(name='around with different names'))
 
 #Remove Stock Help Command
 client.remove_command('help')
@@ -85,10 +84,9 @@ async def help(ctx):
     await ctx.send(embed=embed)
 
 #Ping Command
-@client.command()
+@client.slash_command(description="ping pong")
 async def ping(ctx):
-    """Ping Pong"""
-    await ctx.send('Pong!')
+    await ctx.respond("Pong")
 
 
 #Roll Dice Command
@@ -247,7 +245,243 @@ async def ttrdistricts(ctx):
     embed.set_author(name=client.user.name, icon_url=client.user.avatar_url)
     await ctx.send(content=None, embed=embed)
 
+#Board Command
+@client.group()
+async def board(ctx): pass
+  
+#1 Subcommand
+@board.command(aliases=['1'])
+async def one(ctx):
 
+    boardList=["DK's Jungle Adventure", "Peach's Birthday Cake", "Yoshi's Tropical Island", "Mario's Rainbow Castle", "Wario's Battle Canyon", "Luigi's Engine Room", "Eternal Starm", "Bowser's Magma Mountain"]
+    board=random.choice(boardList)
+    boardParsed = urllib.parse.quote(board)
+
+    embed = discord.Embed(title=board,
+                          colour=0x98FB98,
+                          timestamp=ctx.message.created_at)
+
+    embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/RNOBot/master/boards/1/" + boardParsed + ".png")
+    embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {client.user.name}")
+    embed.set_author(name=client.user.name, icon_url=client.user.avatar_url)
+
+    await ctx.send(embed=embed)
+
+#2 Subcommand
+@board.command(aliases=['2'])
+async def two(ctx):
+
+    boardList=["Western Land", "Space Land", "Mystery Land", "Pirate Land", "Horror Land", "Bowser Land"]
+    board=random.choice(boardList)
+    boardParsed = urllib.parse.quote(board)
+
+    embed = discord.Embed(title=board,
+                          colour=0x98FB98,
+                          timestamp=ctx.message.created_at)
+
+    embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/RNOBot/master/boards/2/" + boardParsed + ".png")
+    embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {client.user.name}")
+    embed.set_author(name=client.user.name, icon_url=client.user.avatar_url)
+
+    await ctx.send(embed=embed)
+
+#3 Subcommand
+@board.command(aliases=['3'])
+async def three(ctx):
+
+    boardList=["Chilly Waters", "Deep Bloober Sea", "Woody Woods", "Creepy Cavern", "Spiny Desert", "Waluigi's Island"]
+    board=random.choice(boardList)
+    boardParsed = urllib.parse.quote(board)
+
+    embed = discord.Embed(title=board,
+                          colour=0x98FB98,
+                          timestamp=ctx.message.created_at)
+
+    embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/RNOBot/master/boards/3/" + boardParsed + ".png")
+    embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {client.user.name}")
+    embed.set_author(name=client.user.name, icon_url=client.user.avatar_url)
+
+    await ctx.send(embed=embed)
+
+#4 Subcommand
+@board.command(aliases=['4'])
+async def four(ctx):
+
+    boardList=["Toad's Midway Madness", "Boo's Haunted Bash", "Koopa's Seaside Soiree", "Goomba's Greedy Gala", "Shy Guy's Jungle Jam", "Bowser's Gnarly Party"]
+    board=random.choice(boardList)
+    boardParsed = urllib.parse.quote(board)
+
+    embed = discord.Embed(title=board,
+                          colour=0x98FB98,
+                          timestamp=ctx.message.created_at)
+
+    embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/RNOBot/master/boards/4/" + boardParsed + ".png")
+    embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {client.user.name}")
+    embed.set_author(name=client.user.name, icon_url=client.user.avatar_url)
+
+    await ctx.send(embed=embed)
+
+#5 Subcommand
+@board.command(aliases=['5'])
+async def five(ctx):
+
+    boardList=["Toy Dream", "Rainbow Dream", "Pirate Dream", "Future Dream", "Undersea Dream", "Sweet Dream", "Bowser's Nightmare"]
+    board=random.choice(boardList)
+    boardParsed = urllib.parse.quote(board)
+
+    embed = discord.Embed(title=board,
+                          colour=0x98FB98,
+                          timestamp=ctx.message.created_at)
+
+    embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/RNOBot/master/boards/5/" + boardParsed + ".png")
+    embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {client.user.name}")
+    embed.set_author(name=client.user.name, icon_url=client.user.avatar_url)
+
+    await ctx.send(embed=embed)
+
+#6 Subcommand
+@board.command(aliases=['6'])
+async def six(ctx):
+
+    boardList=["Towering Treetop", "E Gadd's Garage", "Faire Square", "Snowflake Lake", "Castaway Bay", "Clockwork Castle"]
+    board=random.choice(boardList)
+    boardParsed = urllib.parse.quote(board)
+
+    embed = discord.Embed(title=board,
+                          colour=0x98FB98,
+                          timestamp=ctx.message.created_at)
+
+    embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/RNOBot/master/boards/6/" + boardParsed + ".png")
+    embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {client.user.name}")
+    embed.set_author(name=client.user.name, icon_url=client.user.avatar_url)
+
+    await ctx.send(embed=embed)
+
+#7 Subcommand
+@board.command(aliases=['7'])
+async def seven(ctx):
+
+    boardList=["Grand Canal", "Pagoda Peak", "Pyramid Park", "Neon Heights", "Windmillville", "Bowser's Enchanted Inferno"]
+    board=random.choice(boardList)
+    boardParsed = urllib.parse.quote(board)
+
+    embed = discord.Embed(title=board,
+                          colour=0x98FB98,
+                          timestamp=ctx.message.created_at)
+
+    embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/RNOBot/master/boards/7/" + boardParsed + ".png")
+    embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {client.user.name}")
+    embed.set_author(name=client.user.name, icon_url=client.user.avatar_url)
+
+    await ctx.send(embed=embed)
+
+#8 Subcommand
+@board.command(aliases=['8'])
+async def eight(ctx):
+
+    boardList=["DK's Treetop Temple", "Goomba's Booty Boardwalk", "King Boo's Haunted Hideaway", "Shy Guy's Perplex Express", "Koopa's Tycoon Town", "Bowser's Warped Orbit"]
+    board=random.choice(boardList)
+    boardParsed = urllib.parse.quote(board)
+
+    embed = discord.Embed(title=board,
+                          colour=0x98FB98,
+                          timestamp=ctx.message.created_at)
+
+    embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/RNOBot/master/boards/8/" + boardParsed + ".png")
+    embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {client.user.name}")
+    embed.set_author(name=client.user.name, icon_url=client.user.avatar_url)
+
+    await ctx.send(embed=embed)
+
+#9 Subcommand
+@board.command(aliases=['9'])
+async def nine(ctx):
+
+    boardList=["Toad Road", "Blooper Beach", "Boo's Horror Castle", "DK's Jungle Ruins", "Bowser's Station", "Magma Mine", "Bob-omb Factory"]
+    board=random.choice(boardList)
+    boardParsed = urllib.parse.quote(board)
+
+    embed = discord.Embed(title=board,
+                          colour=0x98FB98,
+                          timestamp=ctx.message.created_at)
+
+    embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/RNOBot/master/boards/9/" + boardParsed + ".png")
+    embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {client.user.name}")
+    embed.set_author(name=client.user.name, icon_url=client.user.avatar_url)
+
+    await ctx.send(embed=embed)
+  
+#10 Subcommand
+@board.command(aliases=['10'])
+async def ten(ctx):
+
+    boardList=["Mushroom Park", "Whimsical Water", "Chaos Castle", "Airship Central", "Haunted Trail"]
+    board=random.choice(boardList)
+    boardParsed = urllib.parse.quote(board)
+
+    embed = discord.Embed(title=board,
+                          colour=0x98FB98,
+                          timestamp=ctx.message.created_at)
+
+    embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/RNOBot/master/boards/10/" + boardParsed + ".png")
+    embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {client.user.name}")
+    embed.set_author(name=client.user.name, icon_url=client.user.avatar_url)
+
+    await ctx.send(embed=embed)
+
+#DS Subcommand
+@board.command()
+async def ds(ctx):
+
+    boardList=["Wiggler's Garden", "Kamek's Library", "Bowser's Pinball Machine", "Toadette's Music Room", "DK's Stone Statue"]
+    board=random.choice(boardList)
+    boardParsed = urllib.parse.quote(board)
+
+    embed = discord.Embed(title=board,
+                          colour=0x98FB98,
+                          timestamp=ctx.message.created_at)
+
+    embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/RNOBot/master/boards/DS/" + boardParsed + ".png")
+    embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {client.user.name}")
+    embed.set_author(name=client.user.name, icon_url=client.user.avatar_url)
+
+    await ctx.send(embed=embed)
+
+#Super Subcommand
+@board.command(aliases=['s'])
+async def super(ctx):
+
+    boardList=["Whomp's Domino Ruins", "King Bob-omb's Powderkeg Mine", "Megafruit Paradise", "Kamek's Tantalizing Tower"]
+    board=random.choice(boardList)
+    boardParsed = urllib.parse.quote(board)
+
+    embed = discord.Embed(title=board,
+                          colour=0x98FB98,
+                          timestamp=ctx.message.created_at)
+
+    embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/RNOBot/master/boards/Super/" + boardParsed + ".png")
+    embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {client.user.name}")
+    embed.set_author(name=client.user.name, icon_url=client.user.avatar_url)
+
+    await ctx.send(embed=embed)
+
+#Superstars Subcommand
+@board.command(aliases=['ss'])
+async def superstars(ctx):
+
+    boardList=["Yoshi's Tropical Island", "Peach's Birthday Cake", 'Space Land', 'Horror Land', 'Woody Woods']
+    board=random.choice(boardList)
+    boardParsed = urllib.parse.quote(board)
+
+    embed = discord.Embed(title=board,
+                          colour=0x98FB98,
+                          timestamp=ctx.message.created_at)
+
+    embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/RNOBot/master/boards/Superstars/" + boardParsed + ".png")
+    embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {client.user.name}")
+    embed.set_author(name=client.user.name, icon_url=client.user.avatar_url)
+
+    await ctx.send(embed=embed)
   
 #On Command Error
 #@client.event
