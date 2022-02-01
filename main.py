@@ -80,7 +80,7 @@ async def help(ctx):
         value=
         "!poll <question> - Creates a poll using an upvote, downvote system.\n",
         inline=False)
-    embed.set_author(name=client.user.name, icon_url=client.user.avatar_url)
+    embed.set_author(name=client.user.name, icon_url=client.user.avatar.url)
     await ctx.send(embed=embed)
 
 #Ping Command
@@ -174,7 +174,7 @@ async def s_info(ctx):
     embed.add_field(name="Creation Date", value=f"{server.created_at}", inline=True)
     embed.add_field(name="Server Icon Url", value={server.icon_url}, inline=True)
     embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {client.user.name}")
-    embed.set_author(name=client.user.name, icon_url=client.user.avatar_url)
+    embed.set_author(name=client.user.name, icon_url=client.user.avatar.url)
     await ctx.send(content=None, embed=embed)
 
 
@@ -201,7 +201,7 @@ async def stats(ctx):
     embed.add_field(name='Total Guilds:', value=f"{serverCount}", inline=False)
     embed.add_field(name='Total Users:', value=f"{memberCount}", inline=False)
     embed.add_field(name='Bot Developer:', value="<@" + f"{ownerID}" + ">", inline=False)
-    embed.set_author(name=client.user.name, icon_url=client.user.avatar_url)
+    embed.set_author(name=client.user.name, icon_url=client.user.avatar.url)
     embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {client.user.name}")
     await ctx.send(embed=embed)
 
@@ -242,7 +242,7 @@ async def ttrdistricts(ctx):
     embed.set_thumbnail(url="https://i.ibb.co/RzrzDVh/TTR.png")
     embed.add_field(name="Population:", value=ttr_districts, inline=True)
     embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {client.user.name}")
-    embed.set_author(name=client.user.name, icon_url=client.user.avatar_url)
+    embed.set_author(name=client.user.name, icon_url=client.user.avatar.url)
     await ctx.send(content=None, embed=embed)
 
 #Board Command
@@ -263,7 +263,7 @@ async def one(ctx):
 
     embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/RNOBot/master/boards/1/" + boardParsed + ".png")
     embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {client.user.name}")
-    embed.set_author(name=client.user.name, icon_url=client.user.avatar_url)
+    embed.set_author(name=client.user.name, icon_url=client.user.avatar.url)
 
     await ctx.send(embed=embed)
 
@@ -281,7 +281,7 @@ async def two(ctx):
 
     embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/RNOBot/master/boards/2/" + boardParsed + ".png")
     embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {client.user.name}")
-    embed.set_author(name=client.user.name, icon_url=client.user.avatar_url)
+    embed.set_author(name=client.user.name, icon_url=client.user.avatar.url)
 
     await ctx.send(embed=embed)
 
@@ -299,7 +299,7 @@ async def three(ctx):
 
     embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/RNOBot/master/boards/3/" + boardParsed + ".png")
     embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {client.user.name}")
-    embed.set_author(name=client.user.name, icon_url=client.user.avatar_url)
+    embed.set_author(name=client.user.name, icon_url=client.user.avatar.url)
 
     await ctx.send(embed=embed)
 
@@ -317,7 +317,7 @@ async def four(ctx):
 
     embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/RNOBot/master/boards/4/" + boardParsed + ".png")
     embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {client.user.name}")
-    embed.set_author(name=client.user.name, icon_url=client.user.avatar_url)
+    embed.set_author(name=client.user.name, icon_url=client.user.avatar.url)
 
     await ctx.send(embed=embed)
 
@@ -335,7 +335,7 @@ async def five(ctx):
 
     embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/RNOBot/master/boards/5/" + boardParsed + ".png")
     embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {client.user.name}")
-    embed.set_author(name=client.user.name, icon_url=client.user.avatar_url)
+    embed.set_author(name=client.user.name, icon_url=client.user.avatar.url)
 
     await ctx.send(embed=embed)
 
@@ -353,7 +353,7 @@ async def six(ctx):
 
     embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/RNOBot/master/boards/6/" + boardParsed + ".png")
     embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {client.user.name}")
-    embed.set_author(name=client.user.name, icon_url=client.user.avatar_url)
+    embed.set_author(name=client.user.name, icon_url=client.user.avatar.url)
 
     await ctx.send(embed=embed)
 
@@ -371,7 +371,7 @@ async def seven(ctx):
 
     embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/RNOBot/master/boards/7/" + boardParsed + ".png")
     embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {client.user.name}")
-    embed.set_author(name=client.user.name, icon_url=client.user.avatar_url)
+    embed.set_author(name=client.user.name, icon_url=client.user.avatar.url)
 
     await ctx.send(embed=embed)
 
@@ -389,7 +389,7 @@ async def eight(ctx):
 
     embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/RNOBot/master/boards/8/" + boardParsed + ".png")
     embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {client.user.name}")
-    embed.set_author(name=client.user.name, icon_url=client.user.avatar_url)
+    embed.set_author(name=client.user.name, icon_url=client.user.avatar.url)
 
     await ctx.send(embed=embed)
 
@@ -407,7 +407,7 @@ async def nine(ctx):
 
     embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/RNOBot/master/boards/9/" + boardParsed + ".png")
     embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {client.user.name}")
-    embed.set_author(name=client.user.name, icon_url=client.user.avatar_url)
+    embed.set_author(name=client.user.name, icon_url=client.user.avatar.url)
 
     await ctx.send(embed=embed)
   
@@ -425,7 +425,7 @@ async def ten(ctx):
 
     embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/RNOBot/master/boards/10/" + boardParsed + ".png")
     embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {client.user.name}")
-    embed.set_author(name=client.user.name, icon_url=client.user.avatar_url)
+    embed.set_author(name=client.user.name, icon_url=client.user.avatar.url)
 
     await ctx.send(embed=embed)
 
@@ -443,7 +443,7 @@ async def ds(ctx):
 
     embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/RNOBot/master/boards/DS/" + boardParsed + ".png")
     embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {client.user.name}")
-    embed.set_author(name=client.user.name, icon_url=client.user.avatar_url)
+    embed.set_author(name=client.user.name, icon_url=client.user.avatar.url)
 
     await ctx.send(embed=embed)
 
@@ -461,7 +461,7 @@ async def super(ctx):
 
     embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/RNOBot/master/boards/Super/" + boardParsed + ".png")
     embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {client.user.name}")
-    embed.set_author(name=client.user.name, icon_url=client.user.avatar_url)
+    embed.set_author(name=client.user.name, icon_url=client.user.avatar.url)
 
     await ctx.send(embed=embed)
 
@@ -479,7 +479,7 @@ async def superstars(ctx):
 
     embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/RNOBot/master/boards/Superstars/" + boardParsed + ".png")
     embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {client.user.name}")
-    embed.set_author(name=client.user.name, icon_url=client.user.avatar_url)
+    embed.set_author(name=client.user.name, icon_url=client.user.avatar.url)
 
     await ctx.send(embed=embed)
   
