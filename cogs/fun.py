@@ -15,8 +15,11 @@ class Fun(commands.Cog):
     #Roll Command
     @commands.command(aliases=["party"])
     async def roll(self, ctx, min=1, max=6, count=1):
-        for _ in range(count):
-            await ctx.send(random.randint(min, max))
+        if count <= 20:
+            for _ in range(count):
+                await ctx.send(random.randint(min, max))
+        if count > 20:
+            await ctx.send('Invalid number of rolls')
 
     #Dadjoke Command
     @commands.command(aliases=["dadjoke"])
