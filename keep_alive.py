@@ -1,7 +1,7 @@
 #***************************************************************************#
 #                                                                           #
-# TVS Bot - A Discord Bot For Our School.                                   #
-# https://github.com/NoraHanegan/TVSBot                                     #
+# Doopliss - A Discord Bot For Me.                                          #
+# https://github.com/NoraHanegan/Doopliss                                   #
 # Copyright (C) 2021 Nora Hanegan. All rights reserved.                     #
 #                                                                           #
 # License:                                                                  #
