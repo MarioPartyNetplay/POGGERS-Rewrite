@@ -182,7 +182,7 @@ class MarioParty(commands.Cog):
     @board.command(pass_context=True, aliases=['10'])
     async def ten(self, ctx):
     
-        boardList=["Mushroom Park", "Whimsical Water", "Chaos Castle", "Airship Central", "Haunted Trail"]
+        boardList=["Mushroom Park", "Whimsical Waters", "Chaos Castle", "Airship Central", "Haunted Trail"]
         board=random.choice(boardList)
         boardParsed = urllib.parse.quote(board)
     
