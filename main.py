@@ -17,30 +17,13 @@ from cogs.fun import Fun
 from cogs.marioparty import MarioParty
 from cogs.toontown import Toontown
 
-from discord.ext import commands
-from keep_alive import keep_alive
-
-#Variables
-ownerID = 543576276108181506
+from discord.ext import *
 
 #Intents
 intents = discord.Intents.all()
 
 #Define Client
 bot = commands.Bot(description="Doopliss", command_prefix=commands.when_mentioned_or("/"), intents=intents, activity=discord.Game(name='around with different names'))
-
-def ReadServerConf(id):
-  try:
-    rcfg = open(str(id)+".cfg","rt")
-    configopts = rcfg.readlines()
-    rcfg.close()
-    return configopts
-  except:
-    print("Config for server " + str(id) + " could not be read.")
-    ccfg = open(str(id)+".cfg","wt")
-    ccfg.writelines(["",""])
-    ccfg.close()
-    return ["",""]
 
 @bot.event
 async def on_ready():
@@ -72,6 +55,6 @@ bot.add_cog(MarioParty(bot))
 bot.add_cog(Toontown(bot))
 
 #Run Bot
-keep_alive()
+#keep_alive()
 TOKEN = os.environ.get("TOKEN")
 bot.run(TOKEN)

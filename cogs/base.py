@@ -1,7 +1,11 @@
 import discord
+import platform
 
 from discord.ext import commands
 
+#Variables
+ownerID = 543576276108181506
+catAPI = "live_06YtjK1Rg6MouL1VpDVjMj0SNltAMEP4IoiULHVLsWKyklu1IYSpd2IpKkFFaMia"
 class Base(commands.Cog):
 
     """Cog for Base commands"""
@@ -40,16 +44,19 @@ class Base(commands.Cog):
             description='\uFEFF',
             colour=0x98FB98,
             timestamp=ctx.message.created_at)
-        embed.set_thumbnail(url=server.icon_url_as(size=512))
+        try:
+            embed.set_thumbnail(url=server.icon(size=512))
+        except:
+            pass
         embed.add_field(name="Name", value=server.name, inline=True)
-        embed.add_field(name="Region", value=server.region, inline=True)
+        #embed.add_field(name="Region", value=server.region, inline=True) #Deprecated
         embed.add_field(name="Member Count", value=server.member_count, inline=True)
         embed.add_field(name="Owner", value="<@" + f"{server.owner_id}" + ">", inline=True)
         embed.add_field(name="ID", value=server.id, inline=True)
         embed.add_field(name="Creation Date", value=f"{server.created_at}", inline=True)
-        embed.add_field(name="Server Icon Url", value={server.icon_url}, inline=True)
-        embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {client.user.name}")
-        embed.set_author(name=client.user.name, icon_url=client.user.avatar.url)
+        #embed.add_field(name="Server Icon Url", value={server.icon_url}, inline=True) #Doesn't Exist Anymore
+        embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {self.bot.user.name}")
+        embed.set_author(name=self.bot.user.name, icon_url=self.bot.user.avatar.url)
         await ctx.send(content=None, embed=embed)
 
     #Stats Command
@@ -58,11 +65,11 @@ class Base(commands.Cog):
 
         pythonVersion = platform.python_version()
         dpyVersion = discord.__version__
-        serverCount = len(client.guilds)
-        memberCount = len(set(client.get_all_members()))
+        serverCount = len(self.bot.guilds)
+        memberCount = len(set(self.bot.get_all_members()))
 
         embed = discord.Embed(
-            title=f'{client.user.name} Stats',
+            title=f'{self.bot.user.name} Stats',
             description='\uFEFF',
             colour=0x98FB98,
             timestamp=ctx.message.created_at)
@@ -83,8 +90,8 @@ class Base(commands.Cog):
         await ctx.send(str(ctx.channel.id))
 
     @commands.command(brief="Get the ID of a member")
-    async def userid(ctx,member : discord.Member):
-      if member == None:
+    async def userid(self, ctx, member : discord.Member=0):
+      if member == 0:
         await ctx.send(str(ctx.author.id))
       else:
         await ctx.send(str(member.id))
