@@ -28,7 +28,7 @@ class MarioParty(commands.Cog):
                               colour=0x98FB98,
                               timestamp=ctx.message.created_at)
     
-        embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/Doopliss/master/boards/1/" + boardParsed + ".png")
+        embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/1/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {self.bot.user.name}")
         embed.set_author(name=self.bot.user.name, icon_url=self.bot.user.avatar.url)
     
@@ -46,7 +46,7 @@ class MarioParty(commands.Cog):
                               colour=0x98FB98,
                               timestamp=ctx.message.created_at)
     
-        embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/Doopliss/master/boards/2/" + boardParsed + ".png")
+        embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/2/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {self.bot.user.name}")
         embed.set_author(name=self.bot.user.name, icon_url=self.bot.user.avatar.url)
     
@@ -64,7 +64,7 @@ class MarioParty(commands.Cog):
                               colour=0x98FB98,
                               timestamp=ctx.message.created_at)
     
-        embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/Doopliss/master/boards/3/" + boardParsed + ".png")
+        embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/3/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {self.bot.user.name}")
         embed.set_author(name=self.bot.user.name, icon_url=self.bot.user.avatar.url)
     
@@ -82,7 +82,7 @@ class MarioParty(commands.Cog):
                               colour=0x98FB98,
                               timestamp=ctx.message.created_at)
     
-        embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/Doopliss/master/boards/4/" + boardParsed + ".png")
+        embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/4/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {self.bot.user.name}")
         embed.set_author(name=self.bot.user.name, icon_url=self.bot.user.avatar.url)
     
@@ -100,7 +100,7 @@ class MarioParty(commands.Cog):
                               colour=0x98FB98,
                               timestamp=ctx.message.created_at)
     
-        embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/Doopliss/master/boards/5/" + boardParsed + ".png")
+        embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/5/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {self.bot.user.name}")
         embed.set_author(name=self.bot.user.name, icon_url=self.bot.user.avatar.url)
     
@@ -118,7 +118,7 @@ class MarioParty(commands.Cog):
                               colour=0x98FB98,
                               timestamp=ctx.message.created_at)
     
-        embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/Doopliss/master/boards/6/" + boardParsed + ".png")
+        embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/6/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {self.bot.user.name}")
         embed.set_author(name=self.bot.user.name, icon_url=self.bot.user.avatar.url)
     
@@ -136,7 +136,7 @@ class MarioParty(commands.Cog):
                               colour=0x98FB98,
                               timestamp=ctx.message.created_at)
     
-        embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/Doopliss/master/boards/7/" + boardParsed + ".png")
+        embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/7/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {self.bot.user.name}")
         embed.set_author(name=self.bot.user.name, icon_url=self.bot.user.avatar.url)
     
@@ -154,7 +154,7 @@ class MarioParty(commands.Cog):
                               colour=0x98FB98,
                               timestamp=ctx.message.created_at)
     
-        embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/Doopliss/master/boards/8/" + boardParsed + ".png")
+        embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/8/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {self.bot.user.name}")
         embed.set_author(name=self.bot.user.name, icon_url=self.bot.user.avatar.url)
     
@@ -172,7 +172,7 @@ class MarioParty(commands.Cog):
                               colour=0x98FB98,
                               timestamp=ctx.message.created_at)
     
-        embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/Doopliss/master/boards/9/" + boardParsed + ".png")
+        embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/9/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {self.bot.user.name}")
         embed.set_author(name=self.bot.user.name, icon_url=self.bot.user.avatar.url)
     
@@ -190,7 +190,7 @@ class MarioParty(commands.Cog):
                               colour=0x98FB98,
                               timestamp=ctx.message.created_at)
     
-        embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/Doopliss/master/boards/10/" + boardParsed + ".png")
+        embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/10/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {self.bot.user.name}")
         embed.set_author(name=self.bot.user.name, icon_url=self.bot.user.avatar.url)
     
@@ -208,7 +208,7 @@ class MarioParty(commands.Cog):
                               colour=0x98FB98,
                               timestamp=ctx.message.created_at)
     
-        embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/Doopliss/master/boards/DS/" + boardParsed + ".png")
+        embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/DS/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {self.bot.user.name}")
         embed.set_author(name=self.bot.user.name, icon_url=self.bot.user.avatar.url)
     
@@ -226,7 +226,7 @@ class MarioParty(commands.Cog):
                               colour=0x98FB98,
                               timestamp=ctx.message.created_at)
     
-        embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/Doopliss/master/boards/Super/" + boardParsed + ".png")
+        embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/Super/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {self.bot.user.name}")
         embed.set_author(name=self.bot.user.name, icon_url=self.bot.user.avatar.url)
     
@@ -244,7 +244,7 @@ class MarioParty(commands.Cog):
                               colour=0x98FB98,
                               timestamp=ctx.message.created_at)
     
-        embed.set_image(url="https://raw.githubusercontent.com/UnicorNora/Doopliss/master/boards/Superstars/" + boardParsed + ".png")
+        embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/Superstars/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {self.bot.user.name}")
         embed.set_author(name=self.bot.user.name, icon_url=self.bot.user.avatar.url)
     

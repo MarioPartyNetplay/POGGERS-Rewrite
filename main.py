@@ -17,13 +17,14 @@ from cogs.fun import Fun
 from cogs.marioparty import MarioParty
 from cogs.toontown import Toontown
 
-from discord.ext import *
+from discord.ext import tasks
+from discord.ext import commands
 
 #Intents
 intents = discord.Intents.all()
 
 #Define Client
-bot = commands.Bot(description="Doopliss", command_prefix=commands.when_mentioned_or("/"), intents=intents, activity=discord.Game(name='around with different names'))
+bot = commands.Bot(description="Doopliss", command_prefix=commands.when_mentioned_or("/"), intents=intents, activity=discord.Game(name='around with different names'), guild_ids=[1048370760776962159])
 
 @bot.event
 async def on_ready():
@@ -47,7 +48,6 @@ async def on_ready():
   print("Py-Cord " + discord.__version__)
 
 
-
 #Boot Cogs
 bot.add_cog(Base(bot))
 bot.add_cog(Fun(bot))
@@ -56,5 +56,5 @@ bot.add_cog(Toontown(bot))
 
 #Run Bot
 #keep_alive()
-TOKEN = os.environ.get("TOKEN")
+TOKEN = "NTkyMDkzODYyODIzMDY3NzA0.Gv3YNO.1Nxn4ftfUDh2XSlBXmvIzZwwHSbx01IPS2U2po"#os.environ.get("TOKEN_DOOPLISS")
 bot.run(TOKEN)

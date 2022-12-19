@@ -20,27 +20,27 @@ class Toontown(commands.Cog):
         ttr_invasions_json = ttr_invasions_response.json()
         ttr_invasions = ttr_invasions_json["invasions"]
         invasions = []
+        try:
+            for invasion in list(ttr_invasions.keys()):
+                districtName = invasion
+                cogType = ttr_invasions[invasion]["type"]
+                cogType = cogType.replace("\u0003", "")
+                cogProgress = ttr_invasions[invasion]["progress"]
+                cogProgress = cogProgress.replace("0/1000000", "MEGA Invasion!")
+                invasions.append("{}: {} ({})".format(districtName, cogType, cogProgress))
 
-        for invasion in list(ttr_invasions.keys()):
-            districtName = invasion
-            cogType = ttr_invasions[invasion]["type"]
-            cogType = cogType.replace("\u0003", "")
-            cogProgress = ttr_invasions[invasion]["progress"]
-            cogProgress = cogProgress.replace("0/1000000", "MEGA Invasion!")
-            invasions.append("{}: {} ({})".format(districtName, cogType, cogProgress))
-       
-        ttr_invasions = "\n".join(sorted(invasions))
-
+            ttr_invasions = "\n".join(sorted(invasions))
+        except:
+            ttr_invasions = "No Invasions"
         embed = discord.Embed(
             title=f'Toontown Rewritten Invasions',
             description='\uFEFF',
-            colour=0x98FB98,
-            timestamp=ctx.message.created_at)
+            colour=0x98FB98)
         embed.set_thumbnail(url="https://i.ibb.co/RzrzDVh/TTR.png")
         embed.add_field(name="Invasions:", value=ttr_invasions, inline=True)
         embed.set_footer(text=f"Ran by: {ctx.message.author} • Yours truly, {self.bot.user.name}")
         embed.set_author(name=self.bot.user.name, icon_url=self.bot.user.avatar.url)
-        await ctx.send(content=None, embed=embed)
+        await channel.send(embed=embed)
 
     #TTCC Invasions Command
     @commands.command(pass_context=True, aliases=["ttcc_invasions"])
@@ -50,17 +50,20 @@ class Toontown(commands.Cog):
         ttcc_invasions = ttcc_invasions_response.json()
         invasions = []
 
-        for invasion in ttcc_invasions:
-            if "None" == invasion['cogs_attacking']:
-                pass
-            else:
-                districtName = invasion['name']
-                cogType = invasion['cogs_attacking']
-                countDefeated = invasion['count_defeated']
-                countTotal = invasion['count_total']
-                invasions.append("{}: {} ({}/{})".format(districtName, cogType, countDefeated, countTotal))
-       
-        ttcc_invasions = "\n".join(sorted(invasions))
+        try:
+          for invasion in ttcc_invasions:
+              if "None" == invasion['cogs_attacking']:
+                  pass
+              else:
+                  districtName = invasion['name']
+                  cogType = invasion['cogs_attacking']
+                  countDefeated = invasion['count_defeated']
+                  countTotal = invasion['count_total']
+                  invasions.append("{}: {} ({}/{})".format(districtName, cogType, countDefeated, countTotal))
+
+          ttcc_invasions = "\n".join(sorted(invasions))
+        except:
+            ttcc_invasions = "No Invasions"
 
         embed = discord.Embed(
             title=f'Corporate Clash Invasions',
@@ -82,18 +85,19 @@ class Toontown(commands.Cog):
         tvs_invasions = tvs_invasions_json["districts"]
         invasions = []
 
-        for invasion in list(tvs_invasions.keys()):
-            if 'invasion' in tvs_invasions[invasion]:
-                districtName = invasion
-                cogType = tvs_invasions[invasion]['invasion']['type']
-                countRemaining = tvs_invasions[invasion]['invasion']['remaining']
-                countTotal = tvs_invasions[invasion]['invasion']['total']
-                countDefeated = int(countTotal) - int(countRemaining)
-                invasions.append("{}: {} ({}/{})".format(districtName, cogType, countDefeated, countTotal))
-            else:
-                pass
-            
-        tvs_invasions = "\n".join(sorted(invasions))
+        try:
+          for invasion in list(tvs_invasions.keys()):
+              if 'invasion' in tvs_invasions[invasion]:
+                  districtName = invasion
+                  cogType = tvs_invasions[invasion]['invasion']['type']
+                  countRemaining = tvs_invasions[invasion]['invasion']['remaining']
+                  countTotal = tvs_invasions[invasion]['invasion']['total']
+                  countDefeated = int(countTotal) - int(countRemaining)
+                  invasions.append("{}: {} ({}/{})".format(districtName, cogType, countDefeated, countTotal))
+              else:
+                  pass
+        except:
+            tvs_invasions = "No Invasions"
 
         embed = discord.Embed(
             title=f'Tooniversal Invasions',
@@ -119,10 +123,7 @@ class Toontown(commands.Cog):
             if 'invasion' in ods_invasions[invasion]:
                 districtName = invasion
                 cogType = ods_invasions[invasion]['invasion']['type']
-                countRemaining = ods_invasions[invasion]['invasion']['remaining']
-                countTotal = ods_invasions[invasion]['invasion']['total']
-                countDefeated = int(countTotal) - int(countRemaining)
-                invasions.append("{}: {} ({}/{})".format(districtName, cogType, countDefeated, countTotal))
+                invasions.append("{}: {}".format(districtName, cogType))
             else:
                 pass
             
@@ -147,15 +148,18 @@ class Toontown(commands.Cog):
         ttf_invasions_json = ttf_invasions_response.json()
         ttf_invasions = ttf_invasions_json["invasions"]
         invasions = []
+        try:
+          for invasion in ttf_invasions:
+              districtName = invasion["districtName"]
+              cogType = invasion["cogName"]
+              cogType = cogType.replace("\u0003", "")
+              countRemaining = invasion["remaining"]
+              countTotal = invasion['total']
+              countDefeated = int(countTotal) - int(countRemaining)
+              invasions.append("{}: {} ({}/{})".format(districtName, cogType, countDefeated, countTotal))
+        except:
+            ttf_invasions = "No Invasions"
 
-        for invasion in ttf_invasions:
-            districtName = invasion["districtName"]
-            cogType = invasion["cogName"]
-            countRemaining = invasion["remaining"]
-            countTotal = invasion['total']
-            countDefeated = int(countTotal) - int(countRemaining)
-            invasions.append("{}: {} ({}/{})".format(districtName, cogType, countDefeated, countTotal))
-       
         ttf_invasions = "\n".join(sorted(invasions))
 
         embed = discord.Embed(
@@ -207,19 +211,20 @@ class Toontown(commands.Cog):
         ttcc_totalpop_json = ttcc_totalpop_response.json()
         
         ttcc_total_pop = ttcc_totalpop_json["num_toons"]
-
+        
         ttcc_districts_api = "https://corporateclash.net/api/v1/districts.js"
         ttcc_districts_response = requests.get(ttcc_districts_api, verify=True)
         ttcc_districts = ttcc_districts_response.json()
-
+        
         districts = []
         populationCount = []
-
+        
         for district in ttcc_districts:
             districts.append("{}: {}".format(district['name'], district['population']))
-
+        
         ttcc_districts = "\n".join(sorted(districts))
         ttcc_districts = "Total Population: " + str(ttcc_total_pop) + "\n\n" + ttcc_districts
+
 
         embed = discord.Embed(
             title=f'Corporate Clash Population',
@@ -248,13 +253,13 @@ class Toontown(commands.Cog):
             popNumber = tvs_districts[district]['population']
             districts.append("{}: {}".format(districtName, popNumber))
             populationCount.append("{}".format(popNumber))
-        
-        
+
+
         populationCount = " ".join(populationCount)
         populationCount = list(populationCount.split(" "))
         populationCount = [ int(x) for x in populationCount ]
         total_pop = sum(populationCount)
-       
+
         tvs_districts = "\n".join(sorted(districts))
         tvs_districts2 = "Total Population: " + str(total_pop) + "\n\n" + tvs_districts
 
@@ -276,22 +281,24 @@ class Toontown(commands.Cog):
         ods_districts_response = requests.get(ods_districts_api, verify=True)
         ods_districts_json = ods_districts_response.json()
         ods_districts = ods_districts_json["districts"]
-
+        
         districts = []
         populationCount = []
-
-        for district in list(ods_districts.keys()):
-            districtName = district
-            popNumber = ods_districts[district]['population']
-            districts.append("{}: {}".format(districtName, popNumber))
-            populationCount.append("{}".format(popNumber))
+        try:
+          for district in list(ods_districts.keys()):
+              districtName = district
+              popNumber = ods_districts[district]['population']
+              districts.append("{}: {}".format(districtName, popNumber))
+              populationCount.append("{}".format(popNumber))
+        except:
+            ttr_invasions = "No Invasions"
         
         
         populationCount = " ".join(populationCount)
         populationCount = list(populationCount.split(" "))
         populationCount = [ int(x) for x in populationCount ]
         total_pop = sum(populationCount)
-       
+        
         ods_districts = "\n".join(sorted(districts))
         ods_districts2 = "Total Population: " + str(total_pop) + "\n\n" + ods_districts
 
