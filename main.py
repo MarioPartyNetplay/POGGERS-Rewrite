@@ -56,5 +56,5 @@ bot.add_cog(Toontown(bot))
 
 #Run Bot
 #keep_alive()
-TOKEN = "NTkyMDkzODYyODIzMDY3NzA0.Gv3YNO.1Nxn4ftfUDh2XSlBXmvIzZwwHSbx01IPS2U2po"#os.environ.get("TOKEN_DOOPLISS")
+TOKEN = "NTkyMDkzODYyODIzMDY3NzA0.GekWBD.9XCtOqJ_8j3mIqLpxMVBP9OL42nGF2J22osrO0"#os.environ.get("TOKEN_DOOPLISS")
 bot.run(TOKEN)
