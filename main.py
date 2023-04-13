@@ -1,8 +1,8 @@
 #***************************************************************************#
 #                                                                           #
-# Doopliss - A Discord Bot For Me.                                          #
-# https://github.com/NoraHanegan/Doopliss                                   #
-# Copyright (C) 2021 Nora Hanegan. All rights reserved.                     #
+# Poggers                                                                   #
+# https://github.com/MarioPartyNetplay/Poggers-Rewrite                      #
+# Copyright (C) 2023 Nora Hanegan. All rights reserved.                     #
 #                                                                           #
 # License:                                                                  #
 # MIT License https://www.mit.edu/~amini/LICENSE.md                         #
@@ -15,7 +15,6 @@ import platform
 from cogs.base import Base
 from cogs.fun import Fun
 from cogs.marioparty import MarioParty
-from cogs.toontown import Toontown
 
 from discord.ext import tasks
 from discord.ext import commands
@@ -30,15 +29,16 @@ bot = commands.Bot(description="Doopliss", command_prefix=commands.when_mentione
 async def on_ready():
   memberCount = len(set(bot.get_all_members()))
   serverCount = len(bot.guilds)
+  
+
   print("                                                                ")
   print("################################################################") 
-  print(f" ______                            __    _                     ")
-  print(f"|_   _ `.                         [  |  (_)                    ")
-  print(f"  | | `. \  .--.    .--.   _ .--.  | |  __   .--.   .--.       ")
-  print(f"  | |  | |/ .'`\ \/ .'`\ \[ '/'`\ \| | [  | ( (`\] ( (`\]      ")
-  print(f" _| |_.' /| \__. || \__. | | \__/ || |  | |  `'.'.  `'.'.      ")
-  print(f"|______.'  '.__.'  '.__.'  | ;.__/[___][___][\__) )[\__) )     ")
-  print(f"                           [__|              \___/  \___/      ")
+  print(f"      __________                                               ")
+  print(f"      \______   \____   ____   ____   ___________  ______      ")
+  print(f"       |     ___/  _ \ / ___\ / ___\_/ __ \_  __ \/  ___/      ")
+  print(f"       |    |  (  <_> ) /_/  > /_/  >  ___/|  | \/\___ \       ")
+  print(f"       |____|   \____/\___  /\___  / \___  >__|  /____  >      ")
+  print(f"                     /_____//_____/      \/           \/       ")
   print("                                                                ")
   print("################################################################") 
   print("Running as: " + bot.user.name + "#" + bot.user.discriminator)
@@ -52,9 +52,8 @@ async def on_ready():
 bot.add_cog(Base(bot))
 bot.add_cog(Fun(bot))
 bot.add_cog(MarioParty(bot))
-bot.add_cog(Toontown(bot))
 
 #Run Bot
 #keep_alive()
-TOKEN = "NTkyMDkzODYyODIzMDY3NzA0.GekWBD.9XCtOqJ_8j3mIqLpxMVBP9OL42nGF2J22osrO0"#os.environ.get("TOKEN_DOOPLISS")
+TOKEN = os.environ.get("BOT_TOKEN")
 bot.run(TOKEN)

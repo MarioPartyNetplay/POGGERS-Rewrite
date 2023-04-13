@@ -5,7 +5,6 @@ from discord.ext import commands
 
 #Variables
 ownerID = 543576276108181506
-catAPI = "live_06YtjK1Rg6MouL1VpDVjMj0SNltAMEP4IoiULHVLsWKyklu1IYSpd2IpKkFFaMia"
 class Base(commands.Cog):
 
     """Cog for Base commands"""
