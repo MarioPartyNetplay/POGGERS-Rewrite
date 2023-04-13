@@ -1,7 +1,7 @@
 import aiohttp
 import discord
 import random
-import box
+import requests
 
 from dadjokes import Dadjoke
 from discord.ext import commands
@@ -14,8 +14,9 @@ class Fun(commands.Cog):
         self.bot = bot
     
     #Roll Command
-    @commands.command(aliases=["party"])
-    async def roll(self, ctx, min=1, max=6, count=1):
+    @commands.slash_command(aliases=["party"])
+    async def roll(self, ctx, min: int, max:int, count:int):
+        
         """Roll a dice, default is rolling 1d6. (minNumber, maxNumber, diceCount)"""
         if count <= 20:
             for _ in range(count):
@@ -24,15 +25,14 @@ class Fun(commands.Cog):
             await ctx.send('Invalid number of rolls')
 
     #Dadjoke Command
-    
-    @commands.command(aliases=["dadjoke"])
-    async def joke(self, ctx):
+    @commands.slash_command(aliases=["dadjoke"])
+    async def dadjoke(self, ctx):
         """Sends a dadjoke."""
         async with ctx.typing():
             await ctx.send(Dadjoke().joke)
 
     #Coin Flip Command
-    @commands.command(aliases=["flip"])
+    @commands.slash_command(aliases=["flip"])
     async def toss(self, ctx):
         """Flip a coin, heads or tails, your fate"""
         ch = ["Heads", "Tails"]
@@ -41,14 +41,14 @@ class Fun(commands.Cog):
 
 
     #Reverse Text Command
-    @commands.command()
+    @commands.slash_command()
     async def reverse(self, ctx, *, text):
         """Reverse the given text"""
         await ctx.send("".join(list(reversed(str(text)))))
 
 
     #Meme Command
-    @commands.command()
+    @commands.slash_command()
     async def meme(self, ctx):
         """Sends you random meme"""
         r = await aiohttp.ClientSession().get(
@@ -63,6 +63,11 @@ class Fun(commands.Cog):
         embed = discord.Embed(title=title, url=url, color=discord.Color.blurple())
         embed.set_image(url=img)
         await ctx.send(embed=embed)
+
+    @commands.slash_command()
+    async def drama(self, ctx):
+        drama = requests.get('http://staff.toonisland.online:3002/raw')
+        await ctx.send(drama.text)
 
 def setup(bot):
     bot.add_cog(Fun(bot))
