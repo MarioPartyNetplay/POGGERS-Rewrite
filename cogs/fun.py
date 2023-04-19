@@ -172,7 +172,7 @@ class Fun(commands.Cog):
         await ctx.send(text)
 
     @commands.slash_command()
-    async def mpfontFlash(self, ctx, text: str, text):
+    async def mpfontFlash(self, ctx, text: str):
         text = text.lower()
         text = text.replace("a", "<:mp2a:706974441854205982>")
         text = text.replace("b", "<:mp2b:706974442311385200>")
