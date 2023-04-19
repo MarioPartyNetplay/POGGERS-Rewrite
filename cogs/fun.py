@@ -104,7 +104,7 @@ class Fun(commands.Cog):
         await ctx.send(text)
 
     @commands.slash_command()
-    async def mpfont(self, ctx, text: str, text):
+    async def mpfont(self, ctx, text: str):
         text = text.lower()
         text = text.replace("a", "<:MPA:705586267324285021>")
         text = text.replace("b", "<:MPB:705586281463414816>")
@@ -138,7 +138,7 @@ class Fun(commands.Cog):
         await ctx.send(text)
 
     @commands.slash_command()
-    async def mpfontShake(self, ctx, text: str, text):
+    async def mpfontShake(self, ctx, text: str):
         text = text.lower()
         text = text.replace("a", "<:mp1a:706974442160521287>")
         text = text.replace("b", "<:mp1b:706974442328424482>")
