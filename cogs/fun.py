@@ -158,7 +158,7 @@ class Fun(commands.Cog):
         text = text.replace("I", "<a:mp1i:706974441699278880>")
         text = text.replace("J", "<a:mp1j:706974441791291515>")
         text = text.replace("K", "<a:mp1k:706974441850273913>")
-        text = text.replace("L", "<a:mp1l:705586383019966545>")
+        text = text.replace("L", "<a:mp1l:706974441850011698>")
         text = text.replace("M", "<a:mp1m:827400882713919488>")
         text = text.replace("N", "<a:mp1n:706974441833496646>")
         text = text.replace("O", "<a:mp1o:706974441560604707>")
