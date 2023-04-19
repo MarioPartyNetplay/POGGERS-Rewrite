@@ -99,7 +99,8 @@ class Fun(commands.Cog):
         text = text.replace("x", "<:MPX:705587097150685225>")
         text = text.replace("y", "<:MPY:705587108584095784>")
         text = text.replace("z", "<:MPZ:705587120370352198>")
-        text = text.replace("!", "<:MPExclamation:705594132181287022")     
+        text = text.replace("!", "<:MPExclamation:705594132181287022") 
+        text = text.replace(" ", "   ")    
         await ctx.send(text)
 
 
