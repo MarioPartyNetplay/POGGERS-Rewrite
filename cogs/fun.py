@@ -5,7 +5,8 @@ import requests
 
 from dadjokes import Dadjoke
 from discord.ext import commands
-from discord import emoji
+from discord import emoji, SlashCommandGroup
+
 
 class Fun(commands.Cog):
 
@@ -13,7 +14,18 @@ class Fun(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
+
+    game = SlashCommandGroup("game", "Game related commands")
+
+    global n64List
+    n64List = ["Mario Party 1", "Mario Party 2", "Mario Party 3", "Rugrats Scavenger Hunt", "1080 Snowboarding", "Banjo-Tooie", "Conker's Bad Fur Day", "Diddy Kong Racing", "Donkey Kong 64", "Dr. Mario 64", "F-Zero X", "GoldenEye 007", "Kirby 64", "Lego Racers", "Mario Golf", "Mario Kart 64", "Mickey's Speedway USA", "Pokemon Stadium", "Pokemon Stadium 2", "Rakuga Kids", "Super Smash Bros (N64)", "Snowboard Kids", "Snowboard Kids 2", "Star Wars Episode I Pod Racer", "Wave Race 64", "Super Smash Bros 199XTE", "Smash Remix", "South Park World Rally", "Monopoly", "Cruis'n USA", "Hotwheels: Turbo Racing", "Bomberman 64", "Pokemon Puzzle League", "Tony Hawk's Pro Skater", "Tony Hawk's Pro Skater 2", "Tony Hawk's Pro Skater 3", "NFL Blitz 2000", "NFL Blitz 2001", "Stunt Racer", "The New Tetris", "Cruis'n Exotica", "WWF No Mercy", "Superman 64", "Mundial Ronaldinho Soccer 64", "International Superstar Soccer 64", "ClayFighter: Sculptor's Cut", "Rush 2: Extreme Racing USA", "ClayFighter 63 1/3", "007: The World is Not Enough", "Killer Instinct Gold", "Mortal Kombat 4", "Mortal Kombat Trilogy", "Mario Tennis"]
     
+    global gcList
+    gcList = ["Mario Party 1", "Mario Party 2", "Mario Party 3", "Rugrats Scavenger Hunt", "1080 Snowboarding", "Banjo-Tooie", "Conker's Bad Fur Day", "Diddy Kong Racing", "Donkey Kong 64", "Dr. Mario 64", "F-Zero X", "GoldenEye 007", "Kirby 64", "Lego Racers", "Mario Golf", "Mario Kart 64", "Mickey's Speedway USA", "Pokemon Stadium", "Pokemon Stadium 2", "Rakuga Kids", "Super Smash Bros (N64)", "Snowboard Kids", "Snowboard Kids 2", "Star Wars Episode I Pod Racer", "Wave Race 64", "Super Smash Bros 199XTE", "Smash Remix", "South Park World Rally", "Monopoly", "Cruis'n USA", "Hotwheels: Turbo Racing", "Bomberman 64", "Pokemon Puzzle League", "Tony Hawk's Pro Skater", "Tony Hawk's Pro Skater 2", "Tony Hawk's Pro Skater 3", "NFL Blitz 2000", "NFL Blitz 2001", "Stunt Racer", "The New Tetris", "Cruis'n Exotica", "WWF No Mercy", "Superman 64", "Mundial Ronaldinho Soccer 64", "International Superstar Soccer 64", "ClayFighter: Sculptor's Cut", "Rush 2: Extreme Racing USA", "ClayFighter 63 1/3", "007: The World is Not Enough", "Killer Instinct Gold", "Mortal Kombat 4", "Mortal Kombat Trilogy", "Mario Tennis"]
+    
+    global wiiList    
+    wiiList = ["Mario Party 8", "Mario Party 9", "Mario Kart Wii", "Super Smash Bros Brawl", "Project M", "Dragon Ball Z Budokai 3", "Wii Sports", "Wii Play", "Wii Sports Resort", "Wii Music", "Wii Play Motion", "Wii Party", "Mario Kart Fun", "Mario Kart Fusion", "Super Monkey Ball Banana Blitz", "Super Monkey Ball Step & Roll", "Mario Super Sluggers", "Mario Strikers Charged", "Fortune Street", "Punch-Out!!", "Mario Sports Mix", "Donkey Kong Country Returns", "Kirby's Epic Yarn", "Kirby's Return To Dream Land", "WarioWare: Smooth Moves", "Mario & Sonic at the Olympic Games", "Mario & Sonic at the Olympic Winter Games", "Mario & Sonic at the London 2012 Olympic Games", "Rhythm Heaven Fever", "Donkey Kong Barrel Blast", "Namco Museum Remix", "Rayman Raving Rabbids", "Rayman Raving Rabbids 2", "Rabbids TV Party", "Rabbids Go Home", "Rayman Origins", "New Super Mario Bros Wii", "Newer Super Mario Bros Wii", "Another Super Mario Bros Wii", "New Summer Sun Bros Wii", "M&M's Kart Racing", "Deca Sports", "GoldenEye Wii", "some call of duty game idk", "Brawl Minus", "Hasbro Family Game Night 3", "Guilty Gear XX Accent Core +", "Tatsunoko vs Capcom", "Chicken Little: Ace in Action", "Trauma Center: New Blood", "Boom Blox", "Pokemon Battle Revolution"]
+
     #Roll Command
     @commands.slash_command(aliases=["party"])
     async def roll(self, ctx, min: int, max:int, count:int):
@@ -21,16 +33,16 @@ class Fun(commands.Cog):
         """Roll a dice, default is rolling 1d6. (minNumber, maxNumber, diceCount)"""
         if count <= 20:
             for _ in range(count):
-                await ctx.send(random.randint(min, max))
+                await ctx.respond(random.randint(min, max))
         if count > 20:
-            await ctx.send('Invalid number of rolls')
+            await ctx.respond('Invalid number of rolls')
 
     #Dadjoke Command
     @commands.slash_command(aliases=["dadjoke"])
     async def dadjoke(self, ctx):
         """Sends a dadjoke."""
         async with ctx.typing():
-            await ctx.send(Dadjoke().joke)
+            await ctx.respond(Dadjoke().joke)
 
     #Coin Flip Command
     @commands.slash_command(aliases=["flip"])
@@ -38,14 +50,14 @@ class Fun(commands.Cog):
         """Flip a coin, heads or tails, your fate"""
         ch = ["Heads", "Tails"]
         rch = random.choice(ch)
-        await ctx.send(f"You got **{rch}**")
+        await ctx.respond(f"You got **{rch}**")
 
 
     #Reverse Text Command
     @commands.slash_command()
     async def reverse(self, ctx, *, text):
         """Reverse the given text"""
-        await ctx.send("".join(list(reversed(str(text)))))
+        await ctx.respond("".join(list(reversed(str(text)))))
 
 
     #Meme Command
@@ -63,15 +75,17 @@ class Fun(commands.Cog):
         url = "https://reddit.com" + url_base
         embed = discord.Embed(title=title, url=url, color=discord.Color.blurple())
         embed.set_image(url=img)
-        await ctx.send(embed=embed)
+        await ctx.respond(embed=embed)
 
     @commands.slash_command()
     async def drama(self, ctx):
+        """Sends you drama"""
         drama = requests.get('http://staff.toonisland.online:3002/raw')
-        await ctx.send(drama.text)
+        await ctx.respond(drama.text)
 
     @commands.slash_command()
     async def mpfont(self, ctx, text: str):
+        """Sends given text in MP font"""
         text = text.lower()
         text = text.replace("a", "<:MPA:705586267324285021>")
         text = text.replace("b", "<:MPB:705586281463414816>")
@@ -101,44 +115,11 @@ class Fun(commands.Cog):
         text = text.replace("z", "<:MPZ:705587120370352198>")
         text = text.replace("!", "<:MPExclamation:705594132181287022") 
         text = text.replace(" ", "          ")    
-        await ctx.send(text)
-
-    @commands.slash_command()
-    async def mpfont(self, ctx, text: str):
-        text = text.lower()
-        text = text.replace("a", "<:MPA:705586267324285021>")
-        text = text.replace("b", "<:MPB:705586281463414816>")
-        text = text.replace("c", "<:MPC:705586292301496320>")
-        text = text.replace("d", "<:MPD:705586303139446784>")
-        text = text.replace("e", "<:MPE:705586313042329730>")
-        text = text.replace("f", "<:MPF:705586322689228891>")
-        text = text.replace("g", "<:MPG:836775866738016307>")
-        text = text.replace("h", "<:MPH:705586341450219560>")
-        text = text.replace("i", "<:MPI:705586351122284574>")
-        text = text.replace("j", "<:MPJ:705586360538628237>")
-        text = text.replace("k", "<:MPK:705586374228705311>")
-        text = text.replace("l", "<:MPL:705586383019966545>")
-        text = text.replace("m", "<:MPM:827397829538349099>")
-        text = text.replace("n", "<:MPN:705586402632401018>")
-        text = text.replace("o", "<:MPO:836775888066314290>")
-        text = text.replace("p", "<:MPP:836775916091736105>")
-        text = text.replace("q", "<:MPQ:705586443493310564>")
-        text = text.replace("r", "<:MPR:705586460136439819>")
-        text = text.replace("s", "<:MPS:705586606370848778>")
-        text = text.replace("t", "<:MPT:705586620186886184>")
-        text = text.replace("u", "<:MPU:705587057510318162>")
-        text = text.replace("v", "<:MPV:705587070734958603>")
-        text = text.replace("w", "<:MPW:705587083393368135>")
-        text = text.replace("x", "<:MPX:705587097150685225>")
-        text = text.replace("y", "<:MPY:705587108584095784>")
-        text = text.replace("z", "<:MPZ:705587120370352198>")
-        text = text.replace("!", "<:MPExclamation:705594132181287022")
-        text = text.replace("?", "<:MPQuestion:705594108676276266")
-        text = text.replace(" ", "          ")    
-        await ctx.send(text)
+        await ctx.respond(text)
 
     @commands.slash_command()
     async def mpfontshake(self, ctx, text: str):
+        """Sends given text in MP font"""
         text = text.upper()
         text = text.replace("A", "<a:mp1a:706974442160521287>")
         text = text.replace("B", "<a:mp1b:706974442328424482>")
@@ -169,10 +150,11 @@ class Fun(commands.Cog):
         text = text.replace("!", "<a:mp1ex:706974440663154749") 
         text = text.replace("?", "<a:mp1qu:706974440210038928") 
         text = text.replace(" ", "          ")    
-        await ctx.send(text)
+        await ctx.respond(text)
 
     @commands.slash_command()
     async def mpfontflash(self, ctx, text: str):
+        """Sends given text in MP font"""
         text = text.upper()
         text = text.replace("A", "<a:mp2a:706974441854205982>")
         text = text.replace("B", "<a:mp2b:706974442311385200>")
@@ -203,8 +185,99 @@ class Fun(commands.Cog):
         text = text.replace("!", "<a:mp2ex:706974440663154749") 
         text = text.replace("?", "<a:mp2qu:706974440591720548") 
         text = text.replace(" ", "          ")    
-        await ctx.send(text)
+        await ctx.respond(text)
 
+    #Box Command
+    @commands.slash_command()
+    async def whatsinthebox(self, ctx):
+        """Who is in the box"""
+        boxList=["<a:BowserDance:687668560193126428>", "<a:BabyBowserFast:687678432045170689>", "<a:BabyBowser:404197234436079618>", "<a:BabyBowser:404197234436079618>", "<a:ToadBoat:739621939894550600>", "<a:ToadBoat:739621939894550600>", "<a:ToadDance2Fast:690633607382827069>", "<a:DKWave:902392049347739669>"]
+        box=random.choice(boxList)
+        await ctx.respond(box + " is in the box!")
+    
+    #Day at the Races Command
+    @commands.slash_command()
+    async def dayattheraces(self, ctx):
+        """Mock day at the races"""
+        boxList=["<:datrBobomb:682698795686953011>", "<:datrBoo:682698795951325213>", "<:datrThwomp:682698795477368834>", "<:datrWhomp:682698795980423266>"]
+        box=random.sample(boxList, 4)
+        boxMain = str(box).replace("[", "")
+        boxMain = boxMain.replace("]", "")
+        boxMain = boxMain.replace("'", "")
+        boxMain = boxMain.replace(",", "")
+        await ctx.respond("Day At The Races: Results\n\n" + boxMain)
+
+    #Game Subcommand
+    @game.command(name='marioparty')
+    async def marioparty(self, ctx):
+        """Pick a Mario Party in general"""
+        gameList=["Mario Party 1", "Mario Party 2", "Mario Party 3", "Mario Party 4", "Mario Party 5", "Mario Party 6", "Mario Party 7", "Mario Party 8", "Mario Party 9", "Mario Party 10", "Mario Party: Island Tour", "Mario Party DS", "Mario Party: Star Rush", "Mario Party: The Top 100", "Mario Party Advance", "Mario Party e", "Mario Party Superstars", "Super Mario Party"]
+        gameSelect=random.choice(gameList)
+        await ctx.respond(gameSelect)
+
+    #Game Subcommand
+    @game.command(name='marioparty-n64')
+    async def marioparty(self, ctx):
+        """Pick a Mario Party from the N64"""
+        gameList=["Mario Party 1", "Mario Party 2", "Mario Party 3"]
+        gameSelect=random.choice(gameList)
+        await ctx.respond(gameSelect)
+    
+    #Game Subcommand
+    @game.command(name='marioparty-gc')
+    async def marioparty(self, ctx):
+        """Pick a Mario Party form the GameCube"""
+        gameList=["Mario Party 4", "Mario Party 5", "Mario Party 6", "Mario Party 7"]
+        gameSelect=random.choice(gameList)
+        await ctx.respond(gameSelect)
+    
+    #Game Subcommand
+    @game.command(name='marioparty-gc8')
+    async def marioparty(self, ctx):
+        """Pick a Mario Party from 4-8"""
+        gameList=["Mario Party 4", "Mario Party 5", "Mario Party 6", "Mario Party 7", "Mario Party 8"]
+        gameSelect=random.choice(gameList)
+        await ctx.respond(gameSelect)
+    
+    #Game Subcommand
+    @game.command(name='marioparty-wii')
+    async def marioparty(self, ctx):
+        """Pick a Mario Party"""
+        gameList=["Mario Party 8", "Mario Party 9"]
+        gameSelect=random.choice(gameList)
+        await ctx.respond(gameSelect)
+
+    #Game Subcommand
+    @game.command(name='marioparty-netplayable')
+    async def marioparty(self, ctx):
+        """Pick a Mario Party that you can play over Netplay"""
+        gameList=["Mario Party 1", "Mario Party 2", "Mario Party 3", "Mario Party 4", "Mario Party 5", "Mario Party 6", "Mario Party 7", "Mario Party 8", "Mario Party 9"]
+        gameSelect=random.choice(gameList)
+        await ctx.respond(gameSelect)
+
+    @game.command(name='nintendo-64')
+    async def n64(self, ctx):
+        """Pick a N64 Game"""
+        gameSelect=random.choice(n64List)
+        await ctx.respond(gameSelect)
+        
+    @game.command(name='gamecube')
+    async def gc(self, ctx):
+        """Pick a GameCube Game"""
+        gameSelect=random.choice(gcList)
+        await ctx.respond(gameSelect)    
+
+    @game.command(name='wii')
+    async def wii(self, ctx):
+        """Pick a Wii Game"""
+        gameSelect=random.choice(wiiList)
+        await ctx.respond(gameSelect)
+
+    @game.command(name='all')
+    async def all(self, ctx):
+        """Pick any Game"""
+        gameSelect=random.choice(wiiList + gcList + n64List)
+        await ctx.respond(gameSelect)
 
 def setup(bot):
     bot.add_cog(Fun(bot))

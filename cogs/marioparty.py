@@ -12,7 +12,7 @@ class MarioParty(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    board = SlashCommandGroup("board", "Math related commands")
+    board = SlashCommandGroup("board", "MP Board related commands")
 
 
     #1 Subcommand
@@ -29,7 +29,7 @@ class MarioParty(commands.Cog):
         embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/1/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.author} • Yours truly, Poggers")
      
-        await ctx.send(embed=embed)
+        await ctx.respond(embed=embed)
     
     #2 Subcommand
     @board.command(name='2')
@@ -45,7 +45,7 @@ class MarioParty(commands.Cog):
         embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/2/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.author} • Yours truly, Poggers")
      
-        await ctx.send(embed=embed)
+        await ctx.respond(embed=embed)
     
     #3 Subcommand
     @board.command(name='3')
@@ -61,7 +61,8 @@ class MarioParty(commands.Cog):
         embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/3/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.author} • Yours truly, Poggers")
      
-        await ctx.send(embed=embed)
+        await ctx.respond(embed=embed)
+        
     
     #4 Subcommand
     @board.command(name='4')
@@ -77,7 +78,7 @@ class MarioParty(commands.Cog):
         embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/4/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.author} • Yours truly, Poggers")
      
-        await ctx.send(embed=embed)
+        await ctx.respond(embed=embed)
     
     #5 Subcommand
     @board.command(name='5')
@@ -93,7 +94,7 @@ class MarioParty(commands.Cog):
         embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/5/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.author} • Yours truly, Poggers")
      
-        await ctx.send(embed=embed)
+        await ctx.respond(embed=embed)
     
     #6 Subcommand
     @board.command(name='6')
@@ -109,7 +110,7 @@ class MarioParty(commands.Cog):
         embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/6/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.author} • Yours truly, Poggers")
      
-        await ctx.send(embed=embed)
+        await ctx.respond(embed=embed)
     
     #7 Subcommand
     @board.command(name='7')
@@ -125,7 +126,7 @@ class MarioParty(commands.Cog):
         embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/7/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.author} • Yours truly, Poggers")
      
-        await ctx.send(embed=embed)
+        await ctx.respond(embed=embed)
     
     #8 Subcommand
     @board.command(name='8')
@@ -141,7 +142,7 @@ class MarioParty(commands.Cog):
         embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/8/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.author} • Yours truly, Poggers")
      
-        await ctx.send(embed=embed)
+        await ctx.respond(embed=embed)
     
     #9 Subcommand
     @board.command(name='9')
@@ -157,7 +158,7 @@ class MarioParty(commands.Cog):
         embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/9/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.author} • Yours truly, Poggers")
      
-        await ctx.send(embed=embed)
+        await ctx.respond(embed=embed)
     
     #10 Subcommand
     @board.command(name='10')
@@ -173,7 +174,7 @@ class MarioParty(commands.Cog):
         embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/10/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.author} • Yours truly, Poggers")
      
-        await ctx.send(embed=embed)
+        await ctx.respond(embed=embed)
     
     #DS Subcommand
     @board.command()
@@ -189,7 +190,7 @@ class MarioParty(commands.Cog):
         embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/DS/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.author} • Yours truly, Poggers")
      
-        await ctx.send(embed=embed)
+        await ctx.respond(embed=embed)
     
     #Super Subcommand
     @board.command(name='s')
@@ -205,7 +206,7 @@ class MarioParty(commands.Cog):
         embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/Super/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.author} • Yours truly, Poggers")
      
-        await ctx.send(embed=embed)
+        await ctx.respond(embed=embed)
     
     #Superstars Subcommand
     @board.command(name='ss')
@@ -221,7 +222,7 @@ class MarioParty(commands.Cog):
         embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/Superstars/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.author} • Yours truly, Poggers")
      
-        await ctx.send(embed=embed)
+        await ctx.respond(embed=embed)
 
     
 

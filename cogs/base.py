@@ -15,7 +15,7 @@ class Base(commands.Cog):
     #Ping Command
     @commands.slash_command(description="Ping pong")
     async def ping(self, ctx):
-        await ctx.send("Pong")
+        await ctx.respond("Pong")
 
     #Poll Command
     @commands.slash_command(description="Starts a poll")
@@ -26,7 +26,7 @@ class Base(commands.Cog):
             description='{0}'.format(mesg),
             color=0x00FF00)
         embed.set_footer(text=f"Poll created by: {ctx.author} • React to vote! • Yours truly, Poggers")
-        embed_message = await ctx.send(embed=embed)
+        embed_message = await ctx.respond(embed=embed)
 
         await embed_message.add_reaction('👍')
         await embed_message.add_reaction('👎')
@@ -51,7 +51,7 @@ class Base(commands.Cog):
         embed.add_field(name="ID", value=server.id, inline=True)
         embed.add_field(name="Creation Date", value=f"{server.created_at}", inline=True)
         embed.set_footer(text=f"Ran by: {ctx.author} • Yours truly, Poggers")
-        await ctx.send(content=None, embed=embed)
+        await ctx.respond(content=None, embed=embed)
 
     #Stats Command
     @commands.slash_command()
@@ -75,18 +75,18 @@ class Base(commands.Cog):
         embed.add_field(name='Total Users:', value=f"{memberCount}", inline=False)
         embed.add_field(name='Bot Developer:', value="<@" + f"{ownerID}" + ">", inline=False)
         embed.set_footer(text=f"Ran by: {ctx.author} • Yours truly, Poggers")
-        await ctx.send(embed=embed)
+        await ctx.respond(embed=embed)
 
     @commands.slash_command()
     async def channelid(self, ctx):
-        await ctx.send(str(ctx.channel.id))
+        await ctx.respond(str(ctx.channel.id))
 
     @commands.slash_command(brief="Get the ID of a member")
     async def userid(self, ctx, member : discord.Member=0):
       if member == 0:
-        await ctx.send(str(ctx.author.id))
+        await ctx.respond(str(ctx.author.id))
       else:
-        await ctx.send(str(member.id))
+        await ctx.respond(str(member.id))
 
 def setup(bot):
     bot.add_cog(Base(bot))
