@@ -208,8 +208,8 @@ class Fun(commands.Cog):
         text = text.replace("X", "<a:mp2x:706974440684257283>")
         text = text.replace("Y", "<a:mp2y:706974440805630024>")
         text = text.replace("Z", "<a:mp2z:706974440252244041>")
-        text = text.replace("!", "<a:mp2ex:706974440663154749") 
-        text = text.replace("?", "<a:mp2qu:706974440591720548") 
+        text = text.replace("!", "<a:mp2ex:706974440591720548>") 
+        text = text.replace("?", "<a:mp2qu:706974440478736384>") 
         text = text.replace(" ", "          ")    
         await ctx.respond(text)
 
