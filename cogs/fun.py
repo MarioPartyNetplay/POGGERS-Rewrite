@@ -7,7 +7,6 @@ from dadjokes import Dadjoke
 from discord.ext import commands
 from discord import emoji, SlashCommandGroup
 
-
 class Fun(commands.Cog):
 
     """Cog for Fun commands"""
@@ -25,6 +24,33 @@ class Fun(commands.Cog):
     
     global wiiList    
     wiiList = ["Mario Party 8", "Mario Party 9", "Mario Kart Wii", "Super Smash Bros Brawl", "Project M", "Dragon Ball Z Budokai 3", "Wii Sports", "Wii Play", "Wii Sports Resort", "Wii Music", "Wii Play Motion", "Wii Party", "Mario Kart Fun", "Mario Kart Fusion", "Super Monkey Ball Banana Blitz", "Super Monkey Ball Step & Roll", "Mario Super Sluggers", "Mario Strikers Charged", "Fortune Street", "Punch-Out!!", "Mario Sports Mix", "Donkey Kong Country Returns", "Kirby's Epic Yarn", "Kirby's Return To Dream Land", "WarioWare: Smooth Moves", "Mario & Sonic at the Olympic Games", "Mario & Sonic at the Olympic Winter Games", "Mario & Sonic at the London 2012 Olympic Games", "Rhythm Heaven Fever", "Donkey Kong Barrel Blast", "Namco Museum Remix", "Rayman Raving Rabbids", "Rayman Raving Rabbids 2", "Rabbids TV Party", "Rabbids Go Home", "Rayman Origins", "New Super Mario Bros Wii", "Newer Super Mario Bros Wii", "Another Super Mario Bros Wii", "New Summer Sun Bros Wii", "M&M's Kart Racing", "Deca Sports", "GoldenEye Wii", "some call of duty game idk", "Brawl Minus", "Hasbro Family Game Night 3", "Guilty Gear XX Accent Core +", "Tatsunoko vs Capcom", "Chicken Little: Ace in Action", "Trauma Center: New Blood", "Boom Blox", "Pokemon Battle Revolution"]
+    
+    global n64MPList
+    n64MPList=["Mario Party 1", "Mario Party 2", "Mario Party 3"]
+    
+    global gcMPList
+    gcMPList=["Mario Party 4", "Mario Party 5", "Mario Party 6", "Mario Party 7"]
+    
+    global wiiMPList
+    wiiMPList=["Mario Party 8", "Mario Party 9"]
+    
+    global DSMPList
+    DSMPList=["Mario Party DS"]
+    
+    global AdvanceMPList
+    AdvanceMPList=["Mario Party Advance", "Mario Party e"]
+    
+    global threeDSMPList
+    threeDSMPList=["Mario Party: Island Tour", "Mario Party: Star Rush", "Mario Party: The Top 100", "Mario Party Advance", "Mario Party e"]
+    
+    global switchMPList
+    handheldMPList=["Mario Party Superstars", "Super Mario Party"]
+    
+    global whatsInBoxList
+    whatsInBoxList=["<a:BowserDance:687668560193126428>", "<a:BabyBowserFast:687678432045170689>", "<a:BabyBowser:404197234436079618>", "<a:BabyBowser:404197234436079618>", "<a:ToadBoat:739621939894550600>", "<a:ToadBoat:739621939894550600>", "<a:ToadDance2Fast:690633607382827069>", "<a:DKWave:902392049347739669>"]
+    
+    global raceList
+    raceList=["<:datrBobomb:682698795686953011>", "<:datrBoo:682698795951325213>", "<:datrThwomp:682698795477368834>", "<:datrWhomp:682698795980423266>"]
 
     #Roll Command
     @commands.slash_command(aliases=["party"])
@@ -191,16 +217,14 @@ class Fun(commands.Cog):
     @commands.slash_command()
     async def whatsinthebox(self, ctx):
         """Who is in the box"""
-        boxList=["<a:BowserDance:687668560193126428>", "<a:BabyBowserFast:687678432045170689>", "<a:BabyBowser:404197234436079618>", "<a:BabyBowser:404197234436079618>", "<a:ToadBoat:739621939894550600>", "<a:ToadBoat:739621939894550600>", "<a:ToadDance2Fast:690633607382827069>", "<a:DKWave:902392049347739669>"]
-        box=random.choice(boxList)
+        box=random.choice(whatsInBoxList)
         await ctx.respond(box + " is in the box!")
     
     #Day at the Races Command
     @commands.slash_command()
     async def dayattheraces(self, ctx):
         """Mock day at the races"""
-        boxList=["<:datrBobomb:682698795686953011>", "<:datrBoo:682698795951325213>", "<:datrThwomp:682698795477368834>", "<:datrWhomp:682698795980423266>"]
-        box=random.sample(boxList, 4)
+        box=random.sample(raceList, 4)
         boxMain = str(box).replace("[", "")
         boxMain = boxMain.replace("]", "")
         boxMain = boxMain.replace("'", "")
@@ -211,48 +235,42 @@ class Fun(commands.Cog):
     @game.command(name='marioparty')
     async def marioparty(self, ctx):
         """Pick a Mario Party in general"""
-        gameList=["Mario Party 1", "Mario Party 2", "Mario Party 3", "Mario Party 4", "Mario Party 5", "Mario Party 6", "Mario Party 7", "Mario Party 8", "Mario Party 9", "Mario Party 10", "Mario Party: Island Tour", "Mario Party DS", "Mario Party: Star Rush", "Mario Party: The Top 100", "Mario Party Advance", "Mario Party e", "Mario Party Superstars", "Super Mario Party"]
-        gameSelect=random.choice(gameList)
+        gameSelect=random.choice(n64MPList + gcMPList + wiiMPList + AdvanceMPList + threeDSMPList + DSMPList + switchMPList)
         await ctx.respond(gameSelect)
 
     #Game Subcommand
     @game.command(name='marioparty-n64')
     async def marioparty(self, ctx):
         """Pick a Mario Party from the N64"""
-        gameList=["Mario Party 1", "Mario Party 2", "Mario Party 3"]
-        gameSelect=random.choice(gameList)
+        gameSelect=random.choice(n64MPList)
         await ctx.respond(gameSelect)
     
     #Game Subcommand
     @game.command(name='marioparty-gc')
     async def marioparty(self, ctx):
         """Pick a Mario Party form the GameCube"""
-        gameList=["Mario Party 4", "Mario Party 5", "Mario Party 6", "Mario Party 7"]
-        gameSelect=random.choice(gameList)
+        gameSelect=random.choice(gcMPList)
         await ctx.respond(gameSelect)
     
     #Game Subcommand
     @game.command(name='marioparty-gc8')
     async def marioparty(self, ctx):
         """Pick a Mario Party from 4-8"""
-        gameList=["Mario Party 4", "Mario Party 5", "Mario Party 6", "Mario Party 7", "Mario Party 8"]
-        gameSelect=random.choice(gameList)
+        gameSelect=random.choice(gcMPList + "Mario Party 8")
         await ctx.respond(gameSelect)
     
     #Game Subcommand
     @game.command(name='marioparty-wii')
     async def marioparty(self, ctx):
         """Pick a Mario Party"""
-        gameList=["Mario Party 8", "Mario Party 9"]
-        gameSelect=random.choice(gameList)
+        gameSelect=random.choice(wiiMPList)
         await ctx.respond(gameSelect)
 
     #Game Subcommand
     @game.command(name='marioparty-netplayable')
     async def marioparty(self, ctx):
         """Pick a Mario Party that you can play over Netplay"""
-        gameList=["Mario Party 1", "Mario Party 2", "Mario Party 3", "Mario Party 4", "Mario Party 5", "Mario Party 6", "Mario Party 7", "Mario Party 8", "Mario Party 9"]
-        gameSelect=random.choice(gameList)
+        gameSelect=random.choice(n64MPList + gcMPList + wiiMPList)
         await ctx.respond(gameSelect)
 
     @game.command(name='nintendo-64')
