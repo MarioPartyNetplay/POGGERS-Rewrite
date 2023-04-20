@@ -2,6 +2,7 @@ import aiohttp
 import discord
 import random
 import requests
+import time
 
 from dadjokes import Dadjoke
 from discord.ext import commands
@@ -279,23 +280,51 @@ class Fun(commands.Cog):
         gameSelect=random.choice(n64List)
         await ctx.respond(gameSelect)
         
-    @game.command(name='gamecube')
-    async def gc(self, ctx):
+    @game.command()
+    async def gamecube(self, ctx):
         """Pick a GameCube Game"""
         gameSelect=random.choice(gcList)
         await ctx.respond(gameSelect)    
 
-    @game.command(name='wii')
+    @game.command()
     async def wii(self, ctx):
         """Pick a Wii Game"""
         gameSelect=random.choice(wiiList)
         await ctx.respond(gameSelect)
 
-    @game.command(name='all')
+    @game.command()
     async def all(self, ctx):
         """Pick any Game"""
         gameSelect=random.choice(wiiList + gcList + n64List)
         await ctx.respond(gameSelect)
+
+    @commands.slash_command()
+    async def mpiq(self, ctx):
+        """Mario Party IQ"""
+        await ctx.respond("Quiz Starting...")
+        Decider = str(random.randint(1,100))
+        mylines = []
+        with open ('mpiq/Q' + Decider + '.txt', 'rt') as myfile:
+            for myline in myfile:
+                mylines.append(myline)
+            Difficulty = (mylines[1]) 
+            Game = (mylines[1]) 
+            Question = (mylines[2]) 
+            AnswerList = (mylines[3])
+            ExactAnswer = (mylines[4])
+
+        await ctx.respond("#" + str(Decider) + " | " + Difficulty + " | " + Game)
+        await ctx.send(Question)
+        def check(m):
+            return ctx.author == m.author
+        msg = await self.bot.wait_for('message', timeout=60.0, check=check)
+        msg = AnswerList.replace(" ", "#")
+        if msg.content.lower() in AnswerList:
+            await ctx.send("**Correct Answer!**")
+        else:
+            await ctx.send("**Wrong Answer!** <:26684062114945434:Thwomp Correct Answer was *" + ExactAnswer + "*")
+
+
 
 def setup(bot):
     bot.add_cog(Fun(bot))

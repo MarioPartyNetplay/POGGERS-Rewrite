@@ -1,0 +1,5 @@
+Easy
+Mario Party 8
+When a Mini-Game begins, the text on screen says \"start\" but the announcer says a different word. What word does he say?
+go
+Go

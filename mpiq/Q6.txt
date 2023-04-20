@@ -1,0 +1,5 @@
+Hard
+Mario Party 2
+When selecting two players on a specific board, it will mistakingly say "3 computer players" instead of 2. What board does this happen on?
+bowser
+Bowser Land

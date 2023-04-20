@@ -1,0 +1,5 @@
+Normal
+Mario Party: Star Rush
+What is the maximum number of Stars a player can receive from a single boss battle?
+eight 8
+8

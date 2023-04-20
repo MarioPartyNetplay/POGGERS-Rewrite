@@ -1,0 +1,5 @@
+Easy
+None
+How many Coins do you normally get for landing on a Blue Space?
+three 3
+3
