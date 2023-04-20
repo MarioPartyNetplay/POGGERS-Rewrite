@@ -313,13 +313,13 @@ class Fun(commands.Cog):
             AnswerList = (mylines[3])
             ExactAnswer = (mylines[4])
 
-        await ctx.respond("#" + str(Decider) + " | " + Difficulty + " " + Game)
+        await ctx.respond("#" + str(Decider) + " | " + Difficulty + Game)
         await ctx.send(Question)
         def check(m):
             return ctx.author == m.author
         msg = await self.bot.wait_for('message', timeout=60.0, check=check)
         AnswerList = AnswerList.replace(" ", "#")
-        if msg.content.lower() in AnswerList:
+        if AnswerList in msg.content.lower():
             await ctx.send("**Correct Answer!**")
         else:
             await ctx.send("**Wrong Answer!** <:26684062114945434:Thwomp> Correct Answer was *" + ExactAnswer + "*")
