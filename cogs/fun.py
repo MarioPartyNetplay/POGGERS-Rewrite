@@ -299,10 +299,13 @@ class Fun(commands.Cog):
         await ctx.respond(gameSelect)
 
     @commands.slash_command()
-    async def mpiq(self, ctx):
+    async def mpiq(self, ctx, id: int):
         """Mario Party IQ"""
         await ctx.respond("Quiz Starting...")
-        Decider = str(random.randint(1,100))
+        if id == None:
+            Decider = str(random.randint(1,100))
+        else:
+            Decider = id
         mylines = []
         with open ('mpiq/Q' + Decider + '.txt', 'rt') as myfile:
             for myline in myfile:
