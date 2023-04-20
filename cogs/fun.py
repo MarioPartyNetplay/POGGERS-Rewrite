@@ -307,7 +307,7 @@ class Fun(commands.Cog):
         with open ('mpiq/Q' + Decider + '.txt', 'rt') as myfile:
             for myline in myfile:
                 mylines.append(myline)
-            Difficulty = (mylines[1]) 
+            Difficulty = (mylines[0]) 
             Game = (mylines[1]) 
             Question = (mylines[2]) 
             AnswerList = (mylines[3])
@@ -322,7 +322,7 @@ class Fun(commands.Cog):
         if msg.content.lower() in AnswerList:
             await ctx.send("**Correct Answer!**")
         else:
-            await ctx.send("**Wrong Answer!** <:26684062114945434:Thwomp Correct Answer was *" + ExactAnswer + "*")
+            await ctx.send("**Wrong Answer!** <:26684062114945434:Thwomp> Correct Answer was *" + ExactAnswer + "*")
 
 
 
