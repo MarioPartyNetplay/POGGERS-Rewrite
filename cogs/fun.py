@@ -234,9 +234,15 @@ class Fun(commands.Cog):
 
     #Game Subcommand
     @game.command(name='marioparty')
-    async def marioparty(self, ctx):
+    async def marioparty(self, ctx, amount):
         """Pick a Mario Party in general"""
-        gameSelect=random.choice(n64MPList + gcMPList + wiiMPList + AdvanceMPList + threeDSMPList + DSMPList + switchMPList)
+        if amount == None:
+            amount = 1
+        box=random.sample(n64MPList + gcMPList + wiiMPList + AdvanceMPList + threeDSMPList + DSMPList + switchMPList, amount)
+        boxMain = str(box).replace("[", "")
+        boxMain = boxMain.replace("]", "")
+        boxMain = boxMain.replace("'", "")
+        boxMain = boxMain.replace(",", "")
         await ctx.respond(gameSelect)
 
     #Game Subcommand
@@ -299,7 +305,7 @@ class Fun(commands.Cog):
         await ctx.respond(gameSelect)
 
     @commands.slash_command()
-    async def mpiq(self, ctx, id: str):
+    async def mpiq(self, ctx, id):
         """Mario Party IQ"""
         await ctx.respond("Quiz Starting...")
         if id == None:
