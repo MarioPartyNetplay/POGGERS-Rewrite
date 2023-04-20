@@ -313,7 +313,7 @@ class Fun(commands.Cog):
             AnswerList = (mylines[3])
             ExactAnswer = (mylines[4])
 
-        await ctx.respond("#" + str(Decider) + " | " + Difficulty + " | " + Game)
+        await ctx.respond("#" + str(Decider) + " | " + Difficulty + " " + Game)
         await ctx.send(Question)
         def check(m):
             return ctx.author == m.author
