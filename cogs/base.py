@@ -49,7 +49,11 @@ class Base(commands.Cog):
 
         elif msg.content == "gregg rul":
             await msg.add_reaction("<:GregRulzOk:527614081369112578>")
-            
+
+        elif msg.content == "loves me":
+            listGet=["<:LovesMe:682711728924262536>" "<:LovesMeNot:682711728756097042>", "<:ReallyLovesMe:682711780874518528>", "<:ReallyLovesMeNot:682711729116938266>"]
+            listChoose=random.choice(listGet)
+            await msg.add_reaction("<:GregRulzOk:527614081369112578>")
     #Ping Command
     @commands.slash_command(description="Ping pong")
     async def ping(self, ctx):

@@ -328,7 +328,7 @@ class Fun(commands.Cog):
             return ctx.author == m.author
         msg = await self.bot.wait_for('message', timeout=60.0, check=check)
         AnswerList = AnswerList.replace(" ", "#")
-        if AnswerList in msg.content.contains.lower():
+        if AnswerList in msg.content.lower():
             await ctx.send("**Correct Answer!**")
         else:
             await ctx.send("**Wrong Answer!** <:Thwomp:266840621149454348> Correct Answer was *" + ExactAnswer + "*")
