@@ -21,16 +21,13 @@ class Base(commands.Cog):
         if msg.content == "fuck me":
             await ctx.send("<:BetaBuzz:807778656683425833>")
 
-        elif msg.content == "pick me":
-            listGet=["I, POGGERS, do not concern myself with such trifles", "Absolutely", "Maybe", "The opposite is true", "Phrase your quesry with eloquence please!", "Ask the opposite question", "Not likely", "Reply hazy, try again", "Ask again later", "What was the question?", "Don't count on it", "<:BetaBuzz:807778656683425833>"]
+        elif "pick me" in msg.content:
+            listGet=["I, POGGERS, do not concern myself with such trifles", "Absolutely", "Maybe", "The opposite is true", "Phrase your quesry with eloquence please!", "Ask the opposite question", "Not likely", "Reply hazy, try again", "Ask again later", "What was the question?", "Don't count on it"]
             listChoose=random.choice(listGet)
             await ctx.send(listChoose)
-        
-        elif msg.content == "trisha-":
-            await ctx.send("https://media.discordapp.net/attachments/283845095357153282/913910525145002044/141743460297342976.jpg")
     
         elif msg.content == "pog":
-            await msg.add_reaction("<:ToadPOG:1055627241398206524>") # Unknown Emoji
+            await msg.add_reaction("<:ToadPOG:1055627241398206524>")
         
         elif msg.content == "bluey":
             await msg.add_reaction("<:BLUEY:857417269901787187>")
@@ -50,10 +47,11 @@ class Base(commands.Cog):
         elif msg.content == "gregg rul":
             await msg.add_reaction("<:GregRulzOk:527614081369112578>")
 
-        elif msg.content == "loves me":
+        elif "love me" in msg.content or "loves me" in msg.content:
             listGet=["<:LovesMe:682711728924262536>" "<:LovesMeNot:682711728756097042>", "<:ReallyLovesMe:682711780874518528>", "<:ReallyLovesMeNot:682711729116938266>"]
             listChoose=random.choice(listGet)
-            await msg.add_reaction("<:GregRulzOk:527614081369112578>")
+            await msg.add_reaction(listChoose)
+    
     #Ping Command
     @commands.slash_command(description="Ping pong")
     async def ping(self, ctx):
