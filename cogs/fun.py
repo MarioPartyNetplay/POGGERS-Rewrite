@@ -305,7 +305,7 @@ class Fun(commands.Cog):
         await ctx.respond(gameSelect)
 
     @commands.slash_command()
-    async def mpiq(self, ctx, id):
+    async def mpiq(self, ctx, id=None):
         """Mario Party IQ"""
         await ctx.respond("Quiz Starting...")
         if id == None:

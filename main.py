@@ -23,7 +23,7 @@ from discord.ext import commands
 intents = discord.Intents.all()
 
 #Define Client
-bot = commands.Bot(description="Doopliss", command_prefix=commands.when_mentioned_or("/"), intents=intents, activity=discord.Game(name='Mario Party Netplay'))
+bot = commands.Bot(description="Poggers", command_prefix=commands.when_mentioned_or("/"), intents=intents, activity=discord.Game(name='Mario Party Netplay'))
 
 @bot.event
 async def on_ready():

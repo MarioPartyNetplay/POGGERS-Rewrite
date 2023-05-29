@@ -1,7 +1,9 @@
 import discord
 import platform
+import random
 
 from discord.ext import commands
+from random import randint
 
 #Variables
 ownerID = 543576276108181506
@@ -12,6 +14,42 @@ class Base(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    @commands.Cog.listener()
+    async def on_message(self, msg):
+        ctx = await self.bot.get_context(msg)
+       
+        if msg.content == "fuck me":
+            await ctx.send("<:BetaBuzz:807778656683425833>")
+
+        elif msg.content == "pick me":
+            listGet=["I, POGGERS, do not concern myself with such trifles", "Absolutely", "Maybe", "The opposite is true", "Phrase your quesry with eloquence please!", "Ask the opposite question", "Not likely", "Reply hazy, try again", "Ask again later", "What was the question?", "Don't count on it", "<:BetaBuzz:807778656683425833>"]
+            listChoose=random.choice(listGet)
+            await ctx.send(listChoose)
+        
+        elif msg.content == "trisha-":
+            await ctx.send("https://media.discordapp.net/attachments/283845095357153282/913910525145002044/141743460297342976.jpg")
+    
+        elif msg.content == "pog":
+            await msg.add_reaction("<:ToadPOG:1055627241398206524>") # Unknown Emoji
+        
+        elif msg.content == "bluey":
+            await msg.add_reaction("<:BLUEY:857417269901787187>")
+
+        elif msg.content == "bingo":
+            await msg.add_reaction("<:BINGO:857416286900322355>")
+        
+        elif msg.content == "dad":
+            await msg.add_reaction("<:BLUEY:857416289802387457>")
+
+        elif msg.content == "mum":
+            await msg.add_reaction("<:MUM:857416287957549106>")
+
+        elif msg.content == "gotta be done":
+            await msg.add_reaction("<:BanditDanceMode:681984948282064904>")
+
+        elif msg.content == "gregg rul":
+            await msg.add_reaction("<:GregRulzOk:527614081369112578>")
+            
     #Ping Command
     @commands.slash_command(description="Ping pong")
     async def ping(self, ctx):
