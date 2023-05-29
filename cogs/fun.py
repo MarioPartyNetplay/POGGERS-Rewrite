@@ -203,7 +203,7 @@ class Fun(commands.Cog):
         text = text.replace("R", "<a:mp2r:706974440994504755>")
         text = text.replace("S", "<a:mp2s:706974440688451627>")
         text = text.replace("T", "<a:mp2t:706974441128591442>")
-        text = text.replace("U", "<a:mp2u:706974441686433802>")
+        text = text.replace("U", "<a:mp2u:706974440873001020>")
         text = text.replace("V", "<a:mp2v:706974440914812958>")
         text = text.replace("W", "<a:mp2w:706974440847835206>")
         text = text.replace("X", "<a:mp2x:706974440684257283>")
@@ -331,7 +331,7 @@ class Fun(commands.Cog):
         if AnswerList in msg.content.lower():
             await ctx.send("**Correct Answer!**")
         else:
-            await ctx.send("**Wrong Answer!** <:26684062114945434:Thwomp> Correct Answer was *" + ExactAnswer + "*")
+            await ctx.send("**Wrong Answer!** <:266840621149454348:Thwomp> Correct Answer was *" + ExactAnswer + "*")
 
 
 
