@@ -331,7 +331,7 @@ class Fun(commands.Cog):
         if AnswerList in msg.content.lower():
             await ctx.send("**Correct Answer!**")
         else:
-            await ctx.send("**Wrong Answer!** <:266840621149454348:Thwomp> Correct Answer was *" + ExactAnswer + "*")
+            await ctx.send("**Wrong Answer!** <:Thwomp:266840621149454348> Correct Answer was *" + ExactAnswer + "*")
 
 
 
