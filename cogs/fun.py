@@ -70,7 +70,14 @@ class Fun(commands.Cog):
         """Sends a dadjoke."""
         async with ctx.typing():
             await ctx.respond(Dadjoke().joke)
-
+    
+    #Piracy Command
+    @commands.slash_command(aliases=["piracy"])
+    async def piracy(self, ctx):
+        """Sends a piracy notice."""
+        async with ctx.typing():
+            await ctx.respond("Piracy is no party. Wondering how to get the games? It is against our rules and Discord ToS to link to ROM sharing sites, so users here cannot help you. We encourage users to rip their own games using this guide: https://wiki.dolphin-emu.org/index.php?title=Ripping_Games")
+            
     #Coin Flip Command
     @commands.slash_command(aliases=["flip"])
     async def toss(self, ctx):
