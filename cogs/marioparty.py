@@ -1,6 +1,7 @@
 import discord
 import random
 import urllib
+import requests
 
 from discord.ext import commands
 from discord import SlashCommandGroup
@@ -223,6 +224,49 @@ class MarioParty(commands.Cog):
         embed.set_footer(text=f"Ran by: {ctx.author} • Yours truly, Poggers")
      
         await ctx.respond(embed=embed)
+
+    # Party Planner Board Get
+    @commands.slash_command(pass_context=True, aliases=["pp64"])
+    async def partyplanner(self, ctx, search: str=None):
+        if search == None:
+            params = {
+            'gameId': '6351',
+            'searchFilter': search
+            }
+        else:
+            params = {
+            'gameId': '6351',
+            'searchFilter': search
+            }
+        url = "https://api.curse.tools/v1/cf/mods/search"
+        responce = requests.get(url, params=params)
+        json = responce.json()
+        packList = []
+        embed = discord.Embed(
+            title=f"PartyPlanner64 Board Lookup",
+            description="\uFEFF",
+            colour=0x98FB98        )
+        for pack in json["data"]:
+            url2 = "https://api.curse.tools/v1/cf/mods/" + str(pack["id"]) + "/files/" + str(pack["mainFileId"])
+            responce = requests.get(url2)
+            json2 = responce.json()
+            embed.add_field(name=pack["name"], value="https://" + urllib.parse.quote(json2["data"]["downloadUrl"][8:]), inline=True)
+
+        if json["data"] == []:
+            embed.add_field(name="No Results", value="")
+        else:
+            pass
+        try:
+            embed.set_thumbnail(
+                url="https://i.ibb.co/k8tXpy4/ZNV4-Eki3-400x400.jpg"
+            )
+        except:
+            pass
+        embed.set_footer(
+            text=f"Ran by: {ctx.author} • Yours truly, Poggers"
+        )
+        embed.set_author(name=self.bot.user.name, icon_url=self.bot.user.avatar.url)
+        await ctx.respond(content=None, embed=embed)
 
     
 
