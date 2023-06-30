@@ -68,15 +68,13 @@ class Fun(commands.Cog):
     @commands.slash_command(aliases=["dadjoke"])
     async def dadjoke(self, ctx):
         """Sends a dadjoke."""
-        async with ctx.typing():
-            await ctx.respond(Dadjoke().joke)
+        await ctx.respond(Dadjoke().joke)
     
     #Piracy Command
     @commands.slash_command(aliases=["piracy"])
     async def piracy(self, ctx):
         """Sends a piracy notice."""
-        async with ctx.typing():
-            await ctx.respond("Piracy is no party. Wondering how to get the games? It is against our rules and Discord ToS to link to ROM sharing sites, so users here cannot help you. We encourage users to rip their own games using this guide: https://wii.guide/dump-games.html")
+        await ctx.respond("Piracy is no party. Wondering how to get the games? It is against our rules and Discord ToS to link to ROM sharing sites, so users here cannot help you. We encourage users to rip their own games using this guide: https://wii.guide/dump-games.html")
             
     #Coin Flip Command
     @commands.slash_command(aliases=["flip"])
