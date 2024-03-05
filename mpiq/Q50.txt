@@ -1,5 +1,5 @@
 Normal
 None
 Which *Mario Party* game is the only one to have pre-rendered cutscenes?
-4 four
+4#four
 Mario Party 4
