@@ -332,7 +332,7 @@ class Fun(commands.Cog):
         def check(m):
             return ctx.author == m.author
         msg = await self.bot.wait_for('message', timeout=60.0, check=check)
-        if AnswerList.strip().lower() in msg.content.lower().strip():        
+        if AnswerList.strip().lower() in msg.content.lower():        
             await ctx.send("**Correct Answer!**")
         else:
             await ctx.send("**Wrong Answer!** <:Thwomp:266840621149454348> Correct Answer was " + ExactAnswer)
