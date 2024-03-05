@@ -332,8 +332,6 @@ class Fun(commands.Cog):
         def check(m):
             return ctx.author == m.author
         msg = await self.bot.wait_for('message', timeout=60.0, check=check)
-        AnswerList = AnswerList.strip()
-        AnswerList = AnswerList.replace("#", " ")
         if AnswerList.strip().lower() in msg.content.lower().strip():        
             await ctx.send("**Correct Answer!**")
         else:
