@@ -1,5 +1,5 @@
 Hard
 Mario Party 1
 Though it does not oficially support it, which Nintendo 64 peripheral does Mario Party recognize and try to load from?
-dd disk#drive
+drive
 Nintendo 64 Disk Drive

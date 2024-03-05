@@ -332,7 +332,15 @@ class Fun(commands.Cog):
         def check(m):
             return ctx.author == m.author
         msg = await self.bot.wait_for('message', timeout=60.0, check=check)
-        if AnswerList.strip().lower() in msg.content.lower():        
+        responce = msg.content.lower()
+        responce.replace("dk", "kong")
+        responce.replace("twenty one", "21")
+        responce.replace("twentyone", "21")
+        responce.replace("twelve", "12")
+        responce.replace("reversal", "fortune")
+        responce.replace("dd", "drive")
+        responce.replace("two", "2")
+        if AnswerList.strip().lower() in responce:        
             await ctx.send("**Correct Answer!**")
         else:
             await ctx.send("**Wrong Answer!** <:Thwomp:266840621149454348> Correct Answer was " + ExactAnswer)
