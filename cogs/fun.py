@@ -324,7 +324,7 @@ class Fun(commands.Cog):
             Difficulty = (mylines[0]) 
             Game = (mylines[1]) 
             Question = (mylines[2]) 
-            AnswerList = mylines[3]].split()
+            AnswerList = mylines[3].split()
             ExactAnswer = (mylines[4])
 
         await ctx.respond("#" + str(Decider) + " | " + Difficulty + Game)
