@@ -340,6 +340,7 @@ class Fun(commands.Cog):
         responce.replace("reversal", "fortune")
         responce.replace("dd", "drive")
         responce.replace("two", "2")
+        responce.replace("#", " ")
         if responce.strip().lower() in AnswerList:       
             await ctx.send("**Correct Answer!**")
         else:
