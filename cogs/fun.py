@@ -341,8 +341,13 @@ class Fun(commands.Cog):
         responce.replace("dd", "drive")
         responce.replace("two", "2")
         responce.replace("#", " ")
-        if responce.strip().lower() in AnswerList:       
-            await ctx.send("**Correct Answer!**")
+        response_parts = responce.strip().split()
+
+        # Check each part of the response against the answer list
+        for part in response_parts:
+            if part.lower() in AnswerList:       
+                await ctx.send("**Correct Answer!**")
+                return  # Exit the loop if a correct answer is found
         else:
             await ctx.send("**Wrong Answer!** <:Thwomp:266840621149454348> Correct Answer was " + ExactAnswer)
 
