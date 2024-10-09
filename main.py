@@ -2,7 +2,7 @@
 #                                                                           #
 # Poggers                                                                   #
 # https://github.com/MarioPartyNetplay/Poggers-Rewrite                      #
-# Copyright (C) 2023 Nora Hanegan. All rights reserved.                     #
+# Copyright (C) 2024 Nayla Hanegan. All rights reserved.                     #
 #                                                                           #
 # License:                                                                  #
 # MIT License https://www.mit.edu/~amini/LICENSE.md                         #

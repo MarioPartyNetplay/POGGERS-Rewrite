@@ -1,3 +1,14 @@
+#***************************************************************************#
+#                                                                           #
+# Poggers                                                                   #
+# https://github.com/MarioPartyNetplay/Poggers-Rewrite                      #
+# Copyright (C) 2024 Nayla Hanegan. All rights reserved.                     #
+#                                                                           #
+# License:                                                                  #
+# MIT License https://www.mit.edu/~amini/LICENSE.md                         #
+#                                                                           #
+#***************************************************************************#
+
 import discord
 import platform
 import random
@@ -17,8 +28,15 @@ class Base(commands.Cog):
     @commands.Cog.listener()
     async def on_message(self, msg):
         ctx = await self.bot.get_context(msg)
-       
-        if msg.content == "fuck me":
+        
+        if msg.author.bot:
+            return
+        
+        # Check for specific keywords in the message content
+        elif "not" in msg.content.lower() and ("open" in msg.content.lower() or "run" in msg.content.lower()) and "dolphin" in msg.content.lower():
+            await msg.channel.send("Wondering why your Dolphin / Dolphin-MPN won't open? It's probably because you are missing this install: <https://aka.ms/vs/17/release/vc_redist.x64.exe>")
+
+        elif msg.content == "fuck me":
             await ctx.send("<:BetaBuzz:807778656683425833>")
 
         elif "pick me" in msg.content:
@@ -56,21 +74,6 @@ class Base(commands.Cog):
     @commands.slash_command(description="Ping pong")
     async def ping(self, ctx):
         await ctx.respond("Pong")
-
-    #Poll Command
-    @commands.slash_command(description="Starts a poll")
-    async def poll(self, ctx, question: str):
-        mesg = ' '.join({question})
-        embed = discord.Embed(
-            title='A Poll has Started!',
-            description='{0}'.format(mesg),
-            color=0x00FF00)
-        embed.set_footer(text=f"Poll created by: {ctx.author} • React to vote! • Yours truly, Poggers")
-        embed_message = await ctx.respond(embed=embed)
-
-        await embed_message.add_reaction('👍')
-        await embed_message.add_reaction('👎')
-        await embed_message.add_reaction('🤷')
     
     #Server Command
     @commands.slash_command(descriptin="Shows server info")

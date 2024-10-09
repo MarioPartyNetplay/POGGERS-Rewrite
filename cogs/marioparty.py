@@ -1,3 +1,14 @@
+#***************************************************************************#
+#                                                                           #
+# Poggers                                                                   #
+# https://github.com/MarioPartyNetplay/Poggers-Rewrite                      #
+# Copyright (C) 2024 Nayla Hanegan. All rights reserved.                     #
+#                                                                           #
+# License:                                                                  #
+# MIT License https://www.mit.edu/~amini/LICENSE.md                         #
+#                                                                           #
+#***************************************************************************#
+
 import discord
 import random
 import urllib
@@ -22,7 +33,7 @@ class MarioParty(commands.Cog):
     #1 Subcommand
     @board.command(name='1')
     async def one(self, ctx):
-    
+        """Responds wiht a Mario Party 1 board."""
         boardList=["DK's Jungle Adventure", "Peach's Birthday Cake", "Yoshi's Tropical Island", "Mario's Rainbow Castle", "Wario's Battle Canyon", "Luigi's Engine Room", "Eternal Star", "Bowser's Magma Mountain"]
         board=random.choice(boardList)
         boardParsed = urllib.parse.quote(board)
@@ -30,7 +41,7 @@ class MarioParty(commands.Cog):
         embed = discord.Embed(title=board,
                               colour=0x98FB98)
     
-        embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/1/" + boardParsed + ".png")
+        embed.set_image(url="https://raw.githubusercontent.com/MarioPartyNetplay/Poggers-Rewrite/master/boards/1/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.author} • Yours truly, Poggers")
      
         await ctx.respond(embed=embed)
@@ -38,7 +49,7 @@ class MarioParty(commands.Cog):
     #2 Subcommand
     @board.command(name='2')
     async def two(self, ctx):
-    
+        """Responds wiht a Mario Party 2 board."""
         boardList=["Western Land", "Space Land", "Mystery Land", "Pirate Land", "Horror Land", "Bowser Land"]
         board=random.choice(boardList)
         boardParsed = urllib.parse.quote(board)
@@ -46,7 +57,7 @@ class MarioParty(commands.Cog):
         embed = discord.Embed(title=board,
                               colour=0x98FB98)
     
-        embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/2/" + boardParsed + ".png")
+        embed.set_image(url="https://raw.githubusercontent.com/MarioPartyNetplay/Poggers-Rewrite/master/boards/2/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.author} • Yours truly, Poggers")
      
         await ctx.respond(embed=embed)
@@ -54,7 +65,7 @@ class MarioParty(commands.Cog):
     #3 Subcommand
     @board.command(name='3')
     async def three(self, ctx):
-    
+        """Responds wiht a Mario Party 3 board."""
         boardList=["Chilly Waters", "Deep Bloober Sea", "Woody Woods", "Creepy Cavern", "Spiny Desert", "Waluigi's Island"]
         board=random.choice(boardList)
         boardParsed = urllib.parse.quote(board)
@@ -62,7 +73,7 @@ class MarioParty(commands.Cog):
         embed = discord.Embed(title=board,
                               colour=0x98FB98)
     
-        embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/3/" + boardParsed + ".png")
+        embed.set_image(url="https://raw.githubusercontent.com/MarioPartyNetplay/Poggers-Rewrite/master/boards/3/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.author} • Yours truly, Poggers")
      
         await ctx.respond(embed=embed)
@@ -71,7 +82,7 @@ class MarioParty(commands.Cog):
     #4 Subcommand
     @board.command(name='4')
     async def four(self, ctx):
-    
+        """Responds wiht a Mario Party 4 board."""
         boardList=["Toad's Midway Madness", "Boo's Haunted Bash", "Koopa's Seaside Soiree", "Goomba's Greedy Gala", "Shy Guy's Jungle Jam", "Bowser's Gnarly Party"]
         board=random.choice(boardList)
         boardParsed = urllib.parse.quote(board)
@@ -79,7 +90,7 @@ class MarioParty(commands.Cog):
         embed = discord.Embed(title=board,
                               colour=0x98FB98)
     
-        embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/4/" + boardParsed + ".png")
+        embed.set_image(url="https://raw.githubusercontent.com/MarioPartyNetplay/Poggers-Rewrite/master/boards/4/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.author} • Yours truly, Poggers")
      
         await ctx.respond(embed=embed)
@@ -87,7 +98,7 @@ class MarioParty(commands.Cog):
     #5 Subcommand
     @board.command(name='5')
     async def five(self, ctx):
-    
+        """Responds wiht a Mario Party 5 board."""
         boardList=["Toy Dream", "Rainbow Dream", "Pirate Dream", "Future Dream", "Undersea Dream", "Sweet Dream", "Bowser's Nightmare"]
         board=random.choice(boardList)
         boardParsed = urllib.parse.quote(board)
@@ -95,7 +106,7 @@ class MarioParty(commands.Cog):
         embed = discord.Embed(title=board,
                               colour=0x98FB98)
     
-        embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/5/" + boardParsed + ".png")
+        embed.set_image(url="https://raw.githubusercontent.com/MarioPartyNetplay/Poggers-Rewrite/master/boards/5/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.author} • Yours truly, Poggers")
      
         await ctx.respond(embed=embed)
@@ -103,7 +114,7 @@ class MarioParty(commands.Cog):
     #6 Subcommand
     @board.command(name='6')
     async def six(self, ctx):
-    
+        """Responds wiht a Mario Party 6 board."""
         boardList=["Towering Treetop", "E Gadd's Garage", "Faire Square", "Snowflake Lake", "Castaway Bay", "Clockwork Castle"]
         board=random.choice(boardList)
         boardParsed = urllib.parse.quote(board)
@@ -111,7 +122,7 @@ class MarioParty(commands.Cog):
         embed = discord.Embed(title=board,
                               colour=0x98FB98)
     
-        embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/6/" + boardParsed + ".png")
+        embed.set_image(url="https://raw.githubusercontent.com/MarioPartyNetplay/Poggers-Rewrite/master/boards/6/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.author} • Yours truly, Poggers")
      
         await ctx.respond(embed=embed)
@@ -119,7 +130,7 @@ class MarioParty(commands.Cog):
     #7 Subcommand
     @board.command(name='7')
     async def seven(self, ctx):
-    
+        """Responds wiht a Mario Party 7 board."""
         boardList=["Grand Canal", "Pagoda Peak", "Pyramid Park", "Neon Heights", "Windmillville", "Bowser's Enchanted Inferno"]
         board=random.choice(boardList)
         boardParsed = urllib.parse.quote(board)
@@ -127,7 +138,7 @@ class MarioParty(commands.Cog):
         embed = discord.Embed(title=board,
                               colour=0x98FB98)
     
-        embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/7/" + boardParsed + ".png")
+        embed.set_image(url="https://raw.githubusercontent.com/MarioPartyNetplay/Poggers-Rewrite/master/boards/7/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.author} • Yours truly, Poggers")
      
         await ctx.respond(embed=embed)
@@ -135,7 +146,7 @@ class MarioParty(commands.Cog):
     #8 Subcommand
     @board.command(name='8')
     async def eight(self, ctx):
-    
+        """Responds wiht a Mario Party 8 board."""
         boardList=["DK's Treetop Temple", "Goomba's Booty Boardwalk", "King Boo's Haunted Hideaway", "Shy Guy's Perplex Express", "Koopa's Tycoon Town", "Bowser's Warped Orbit"]
         board=random.choice(boardList)
         boardParsed = urllib.parse.quote(board)
@@ -143,7 +154,7 @@ class MarioParty(commands.Cog):
         embed = discord.Embed(title=board,
                               colour=0x98FB98)
     
-        embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/8/" + boardParsed + ".png")
+        embed.set_image(url="https://raw.githubusercontent.com/MarioPartyNetplay/Poggers-Rewrite/master/boards/8/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.author} • Yours truly, Poggers")
      
         await ctx.respond(embed=embed)
@@ -151,7 +162,7 @@ class MarioParty(commands.Cog):
     #9 Subcommand
     @board.command(name='9')
     async def nine(self, ctx):
-    
+        """Responds wiht a Mario Party 9 board."""
         boardList=["Toad Road", "Blooper Beach", "Boo's Horror Castle", "DK's Jungle Ruins", "Bowser's Station", "Magma Mine", "Bob-omb Factory"]
         board=random.choice(boardList)
         boardParsed = urllib.parse.quote(board)
@@ -159,7 +170,7 @@ class MarioParty(commands.Cog):
         embed = discord.Embed(title=board,
                               colour=0x98FB98)
     
-        embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/9/" + boardParsed + ".png")
+        embed.set_image(url="https://raw.githubusercontent.com/MarioPartyNetplay/Poggers-Rewrite/master/boards/9/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.author} • Yours truly, Poggers")
      
         await ctx.respond(embed=embed)
@@ -167,7 +178,7 @@ class MarioParty(commands.Cog):
     #10 Subcommand
     @board.command(name='10')
     async def ten(self, ctx):
-    
+        """Responds wiht a Mario Party 10 board."""
         boardList=["Mushroom Park", "Whimsical Waters", "Chaos Castle", "Airship Central", "Haunted Trail"]
         board=random.choice(boardList)
         boardParsed = urllib.parse.quote(board)
@@ -175,7 +186,7 @@ class MarioParty(commands.Cog):
         embed = discord.Embed(title=board,
                               colour=0x98FB98)
     
-        embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/10/" + boardParsed + ".png")
+        embed.set_image(url="https://raw.githubusercontent.com/MarioPartyNetplay/Poggers-Rewrite/master/boards/10/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.author} • Yours truly, Poggers")
      
         await ctx.respond(embed=embed)
@@ -183,7 +194,7 @@ class MarioParty(commands.Cog):
     #DS Subcommand
     @board.command()
     async def ds(self, ctx):
-    
+        """Responds wiht a Mario Party DS board."""
         boardList=["Wiggler's Garden", "Kamek's Library", "Bowser's Pinball Machine", "Toadette's Music Room", "DK's Stone Statue"]
         board=random.choice(boardList)
         boardParsed = urllib.parse.quote(board)
@@ -191,15 +202,15 @@ class MarioParty(commands.Cog):
         embed = discord.Embed(title=board,
                               colour=0x98FB98)
     
-        embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/DS/" + boardParsed + ".png")
+        embed.set_image(url="https://raw.githubusercontent.com/MarioPartyNetplay/Poggers-Rewrite/master/boards/DS/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.author} • Yours truly, Poggers")
      
         await ctx.respond(embed=embed)
     
     #Super Subcommand
-    @board.command(name='s')
+    @board.command(name='super')
     async def super(self, ctx):
-    
+        """Responds wiht a Super Mario Party board."""
         boardList=["Whomp's Domino Ruins", "King Bob-omb's Powderkeg Mine", "Megafruit Paradise", "Kamek's Tantalizing Tower"]
         board=random.choice(boardList)
         boardParsed = urllib.parse.quote(board)
@@ -207,15 +218,15 @@ class MarioParty(commands.Cog):
         embed = discord.Embed(title=board,
                               colour=0x98FB98)
     
-        embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/Super/" + boardParsed + ".png")
+        embed.set_image(url="https://raw.githubusercontent.com/MarioPartyNetplay/Poggers-Rewrite/master/boards/Super/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.author} • Yours truly, Poggers")
      
         await ctx.respond(embed=embed)
     
     #Superstars Subcommand
-    @board.command(name='ss')
+    @board.command(name='superstars')
     async def superstars(self, ctx):
-    
+        """Responds wiht a Mario Party Superstars board."""
         boardList=["Yoshi's Tropical Island", "Peach's Birthday Cake", 'Space Land', 'Horror Land', 'Woody Woods']
         board=random.choice(boardList)
         boardParsed = urllib.parse.quote(board)
@@ -223,12 +234,10 @@ class MarioParty(commands.Cog):
         embed = discord.Embed(title=board,
                               colour=0x98FB98)
     
-        embed.set_image(url="https://raw.githubusercontent.com/EndangeredNayla/Doopliss/master/boards/Superstars/" + boardParsed + ".png")
+        embed.set_image(url="https://raw.githubusercontent.com/MarioPartyNetplay/Poggers-Rewrite/master/boards/Superstars/" + boardParsed + ".png")
         embed.set_footer(text=f"Ran by: {ctx.author} • Yours truly, Poggers")
      
         await ctx.respond(embed=embed)
-
-    
     
     # Party Planner Board Get
     @partyplanner.command(pass_context=True, aliases=["cf"])

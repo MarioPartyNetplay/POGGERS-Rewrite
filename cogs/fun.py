@@ -1,3 +1,14 @@
+#***************************************************************************#
+#                                                                           #
+# Poggers                                                                   #
+# https://github.com/MarioPartyNetplay/Poggers-Rewrite                      #
+# Copyright (C) 2024 Nayla Hanegan. All rights reserved.                     #
+#                                                                           #
+# License:                                                                  #
+# MIT License https://www.mit.edu/~amini/LICENSE.md                         #
+#                                                                           #
+#***************************************************************************#
+
 import aiohttp
 import discord
 import random
@@ -75,7 +86,13 @@ class Fun(commands.Cog):
     async def piracy(self, ctx):
         """Sends a piracy notice."""
         await ctx.respond("Piracy is no party. Wondering how to get the games? It is against our rules and Discord ToS to link to ROM sharing sites, so users here cannot help you. We encourage users to rip their own games using this guide: https://wii.guide/dump-games.html")
-            
+
+    #Piracy Command
+    @commands.slash_command(aliases=["cplusplus"])
+    async def cplusplus(self, ctx):
+        """Sends a Visual C++ Redistrutable notice."""
+        await ctx.respond("Wondering why your Dolphin / Dolphin-MPN wont open. It's probably because you are missing this install https://aka.ms/vs/17/release/vc_redist.x64.exe")
+       
     #Coin Flip Command
     @commands.slash_command(aliases=["flip"])
     async def toss(self, ctx):
@@ -248,7 +265,7 @@ class Fun(commands.Cog):
         boxMain = boxMain.replace("]", "")
         boxMain = boxMain.replace("'", "")
         boxMain = boxMain.replace(",", "")
-        await ctx.respond(gameSelect)
+        await ctx.respond(boxMain)
 
     #Game Subcommand
     @game.command(name='marioparty-n64')
