@@ -525,7 +525,7 @@ class MarioParty(commands.Cog):
         await message.delete()
 
         # Get the board image from GitHub
-        github_image_url = f"https://raw.githubusercontent.com/MarioPartyNetplay/Poggers-Rewrite/master/boards//{boardParsed}.png"
+        github_image_url = f"https://raw.githubusercontent.com/MarioPartyNetplay/Poggers-Rewrite/master/boards/Jamboree/{boardParsed}.png"
 
         # Send the final static image
         final_image_file = discord.File(final_img_io, "final_wheel.png")
