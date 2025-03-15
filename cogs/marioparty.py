@@ -43,10 +43,13 @@ class MarioParty(commands.Cog):
         # Generate GIF & final static image
         selected_board, gif_io, final_img_io = generate_wheel_gif(boardList)
         boardParsed = urllib.parse.quote(selected_board)
+        
+        await ctx.respond("Spinning...", delete_after=0)
 
         # Send the GIF
         gif_file = discord.File(gif_io, "spinning_wheel.gif")
         message = await ctx.send(file=gif_file)
+
 
         # Wait for suspense
         await asyncio.sleep(5)
@@ -80,9 +83,12 @@ class MarioParty(commands.Cog):
         selected_board, gif_io, final_img_io = generate_wheel_gif(boardList)
         boardParsed = urllib.parse.quote(selected_board)
 
+        await ctx.respond("Spinning...", delete_after=0)
+
         # Send the GIF
         gif_file = discord.File(gif_io, "spinning_wheel.gif")
         message = await ctx.send(file=gif_file)
+
 
         # Wait for suspense
         await asyncio.sleep(5)
@@ -116,9 +122,12 @@ class MarioParty(commands.Cog):
         selected_board, gif_io, final_img_io = generate_wheel_gif(boardList)
         boardParsed = urllib.parse.quote(selected_board)
 
+        await ctx.respond("Spinning...", delete_after=0)
+
         # Send the GIF
         gif_file = discord.File(gif_io, "spinning_wheel.gif")
         message = await ctx.send(file=gif_file)
+
 
         # Wait for suspense
         await asyncio.sleep(5)
@@ -152,9 +161,12 @@ class MarioParty(commands.Cog):
         selected_board, gif_io, final_img_io = generate_wheel_gif(boardList)
         boardParsed = urllib.parse.quote(selected_board)
 
+        await ctx.respond("Spinning...", delete_after=0)
+
         # Send the GIF
         gif_file = discord.File(gif_io, "spinning_wheel.gif")
         message = await ctx.send(file=gif_file)
+
 
         # Wait for suspense
         await asyncio.sleep(5)
@@ -188,9 +200,12 @@ class MarioParty(commands.Cog):
         selected_board, gif_io, final_img_io = generate_wheel_gif(boardList)
         boardParsed = urllib.parse.quote(selected_board)
 
+        await ctx.respond("Spinning...", delete_after=0)
+
         # Send the GIF
         gif_file = discord.File(gif_io, "spinning_wheel.gif")
         message = await ctx.send(file=gif_file)
+
 
         # Wait for suspense
         await asyncio.sleep(5)
@@ -224,9 +239,12 @@ class MarioParty(commands.Cog):
         selected_board, gif_io, final_img_io = generate_wheel_gif(boardList)
         boardParsed = urllib.parse.quote(selected_board)
 
+        await ctx.respond("Spinning...", delete_after=0)
+
         # Send the GIF
         gif_file = discord.File(gif_io, "spinning_wheel.gif")
         message = await ctx.send(file=gif_file)
+
 
         # Wait for suspense
         await asyncio.sleep(5)
@@ -260,9 +278,12 @@ class MarioParty(commands.Cog):
         selected_board, gif_io, final_img_io = generate_wheel_gif(boardList)
         boardParsed = urllib.parse.quote(selected_board)
 
+        await ctx.respond("Spinning...", delete_after=0)
+
         # Send the GIF
         gif_file = discord.File(gif_io, "spinning_wheel.gif")
         message = await ctx.send(file=gif_file)
+
 
         # Wait for suspense
         await asyncio.sleep(5)
@@ -296,9 +317,12 @@ class MarioParty(commands.Cog):
         selected_board, gif_io, final_img_io = generate_wheel_gif(boardList)
         boardParsed = urllib.parse.quote(selected_board)
 
+        await ctx.respond("Spinning...", delete_after=0)
+
         # Send the GIF
         gif_file = discord.File(gif_io, "spinning_wheel.gif")
         message = await ctx.send(file=gif_file)
+
 
         # Wait for suspense
         await asyncio.sleep(5)
@@ -332,9 +356,12 @@ class MarioParty(commands.Cog):
         selected_board, gif_io, final_img_io = generate_wheel_gif(boardList)
         boardParsed = urllib.parse.quote(selected_board)
 
+        await ctx.respond("Spinning...", delete_after=0)
+
         # Send the GIF
         gif_file = discord.File(gif_io, "spinning_wheel.gif")
         message = await ctx.send(file=gif_file)
+
 
         # Wait for suspense
         await asyncio.sleep(5)
@@ -484,9 +511,12 @@ class MarioParty(commands.Cog):
         selected_board, gif_io, final_img_io = generate_wheel_gif(boardList)
         boardParsed = urllib.parse.quote(selected_board)
 
+        await ctx.respond("Spinning...", delete_after=0)
+
         # Send the GIF
         gif_file = discord.File(gif_io, "spinning_wheel.gif")
         message = await ctx.send(file=gif_file)
+
 
         # Wait for suspense
         await asyncio.sleep(5)
