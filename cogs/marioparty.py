@@ -394,7 +394,7 @@ class MarioParty(commands.Cog):
 
         # Send the GIF
         gif_file = discord.File(gif_io, "spinning_wheel.gif")
-        message = await ctx.respond(file=gif_file)
+        message = await ctx.send(file=gif_file)
 
         # Wait for suspense
         await asyncio.sleep(5)
@@ -423,7 +423,7 @@ class MarioParty(commands.Cog):
 
         # Send the GIF
         gif_file = discord.File(gif_io, "spinning_wheel.gif")
-        message = await ctx.respond(file=gif_file)
+        message = await ctx.send(file=gif_file)
 
         # Wait for suspense
         await asyncio.sleep(5)
@@ -452,7 +452,7 @@ class MarioParty(commands.Cog):
 
         # Send the GIF
         gif_file = discord.File(gif_io, "spinning_wheel.gif")
-        message = await ctx.respond(file=gif_file)
+        message = await ctx.send(file=gif_file)
 
         # Wait for suspense
         await asyncio.sleep(5)
@@ -481,7 +481,7 @@ class MarioParty(commands.Cog):
 
         # Send the GIF
         gif_file = discord.File(gif_io, "spinning_wheel.gif")
-        message = await ctx.respond(file=gif_file)
+        message = await ctx.send(file=gif_file)
 
         # Wait for suspense
         await asyncio.sleep(5)
