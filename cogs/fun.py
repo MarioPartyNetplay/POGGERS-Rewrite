@@ -19,6 +19,8 @@ from dadjokes import Dadjoke
 from discord.ext import commands
 from discord import emoji, SlashCommandGroup
 
+from util.trivia import TriviaView, TriviaModal
+
 # Variables define at module level
 n64MPList = ["Mario Party 1", "Mario Party 2", "Mario Party 3"]
 gcMPList = ["Mario Party 4", "Mario Party 5", "Mario Party 6", "Mario Party 7"]
@@ -192,10 +194,8 @@ class Fun(commands.Cog):
         gameSelect = random.choice(wiiList + gcList + n64List)
         await ctx.respond(gameSelect)
 
-    @commands.slash_command()
-    async def mpiq(self, ctx, id: str = None):
+async def mpiq(self, ctx, id: str = None):
         """Mario Party IQ"""
-        await ctx.respond("Quiz Starting...")
         
         if id is None:
             Decider = str(random.randint(1, 100))
@@ -208,49 +208,25 @@ class Fun(commands.Cog):
                 for myline in myfile:
                     mylines.append(myline.strip())
         except FileNotFoundError:
-            await ctx.send("That quiz ID doesn't exist!")
+            await ctx.respond("That quiz ID doesn't exist!")
             return
 
         Difficulty = mylines[0] 
         Game = mylines[1] 
         Question = mylines[2] 
         
-        # Replace `#` with a space in the expected answer tokens so it can be evaluated
         AnswerList = [word.replace("#", " ").lower() for word in mylines[3].split()]
         ExactAnswer = mylines[4]
 
-        await ctx.send(f"#{Decider} | {Difficulty} - {Game}")
-        await ctx.send(Question)
+        # Attach the button view to the message
+        view = TriviaView(AnswerList, ExactAnswer)
         
-        def check(m):
-            return ctx.author == m.author and m.channel == ctx.channel
-            
-        try:
-            msg = await self.bot.wait_for('message', timeout=60.0, check=check)
-        except discord.utils.asyncio.TimeoutError:
-            await ctx.send(f"**Time is up!** The correct answer was: {ExactAnswer}")
-            return
-
-        responce = msg.content.lower()
-        
-        # Re-assign variables for string mutation
-        responce = responce.replace("dk", "kong")
-        responce = responce.replace("twenty one", "21")
-        responce = responce.replace("twentyone", "21")
-        responce = responce.replace("twelve", "12")
-        responce = responce.replace("reversal", "fortune")
-        responce = responce.replace("dd", "drive")
-        responce = responce.replace("two", "2")
-        responce = responce.replace("#", " ")
-        
-        # Checking to see if any token in AnswerList is matched inside the user's full answer
-        for answer in AnswerList:
-            if answer in responce:       
-                await ctx.send("**Correct Answer!**")
-                return
-        
-        await ctx.send("**Wrong Answer!** <:Thwomp:266840621149454348> Correct Answer was " + ExactAnswer)
-
+        await ctx.respond(
+            f"**Quiz Starting...**\n#{Decider} | {Difficulty} - {Game}\n\n**{Question}**", 
+            view=view
+        )
+        # Save message reference for timeout handling
+        view.message = await ctx.interaction.original_response()
 
 def setup(bot):
     bot.add_cog(Fun(bot))
