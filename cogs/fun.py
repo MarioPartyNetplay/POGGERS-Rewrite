@@ -193,8 +193,9 @@ class Fun(commands.Cog):
         """Pick any Game"""
         gameSelect = random.choice(wiiList + gcList + n64List)
         await ctx.respond(gameSelect)
-
-async def mpiq(self, ctx, id: str = None):
+    
+    @game.command()
+    async def mpiq(self, ctx, id: str = None):
         """Mario Party IQ"""
         
         if id is None:
