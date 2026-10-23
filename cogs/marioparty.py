@@ -62,7 +62,7 @@ class MarioParty(commands.Cog):
             colour=0x98FB98
         )
         result_embed.set_image(url="attachment://final_wheel.png")
-        result_embed.set_footer(text=f"Ran by: {ctx.author} • Yours truly, The Underground Grotto Bot")
+        result_embed.set_footer(text=f"Ran by: {ctx.author} • Yours truly, POGGERS")
         
         # Send everything in one message as follow-up
         await ctx.followup.send(embed=result_embed, file=final_image_file)
@@ -145,7 +145,7 @@ class MarioParty(commands.Cog):
             colour=0x98FB98
         )
         winner_embed.set_image(url="attachment://final_wheel.png")
-        winner_embed.set_footer(text=f"Ran by: {ctx.author} • Yours truly, The Underground Grotto Bot")
+        winner_embed.set_footer(text=f"Ran by: {ctx.author} • Yours truly, POGGERS")
         
         await ctx.send(embed=winner_embed, file=final_image_file)
         
@@ -294,7 +294,7 @@ class MarioParty(commands.Cog):
                 colour=0x98FB98
             )
             winner_embed.set_image(url="attachment://board.png")
-            winner_embed.set_footer(text=f"Ran by: {ctx.author} • Yours truly, The Underground Grotto Bot")
+            winner_embed.set_footer(text=f"Ran by: {ctx.author} • Yours truly, POGGERS")
             
             await ctx.send(embed=winner_embed, file=board_file)
         except FileNotFoundError:
@@ -308,7 +308,7 @@ class MarioParty(commands.Cog):
                 colour=0x98FB98
             )
             winner_embed.set_image(url="attachment://final_wheel.png")
-            winner_embed.set_footer(text=f"Ran by: {ctx.author} • Yours truly, The Underground Grotto Bot")
+            winner_embed.set_footer(text=f"Ran by: {ctx.author} • Yours truly, POGGERS")
             
             await ctx.send(embed=winner_embed, file=final_image_file)
         
