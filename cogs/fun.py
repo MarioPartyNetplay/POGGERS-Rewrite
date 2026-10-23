@@ -88,30 +88,6 @@ class Fun(commands.Cog):
         """Reverse the given text"""
         await ctx.respond("".join(list(reversed(str(text)))))
 
-    #Meme Command
-    @commands.slash_command()
-    async def meme(self, ctx):
-        """Sends you random meme"""
-        async with aiohttp.ClientSession() as session:
-            async with session.get("https://www.reddit.com/r/dankmemes/top.json?sort=new&t=day&limit=100") as r:
-                r_json = await r.json()
-        
-        data = random.choice(r_json["data"]["children"])["data"]
-        img = data["url"]
-        title = data["title"]
-        url_base = data["permalink"]
-        url = "https://reddit.com" + url_base
-        
-        embed = discord.Embed(title=title, url=url, color=discord.Color.blurple())
-        embed.set_image(url=img)
-        await ctx.respond(embed=embed)
-
-    @commands.slash_command()
-    async def drama(self, ctx):
-        """Sends you drama"""
-        drama = requests.get('http://staff.toonisland.online:3002/raw')
-        await ctx.respond(drama.text)
-
     @commands.slash_command()
     async def mpfont(self, ctx, text: str):
         """Sends given text in MP font"""
