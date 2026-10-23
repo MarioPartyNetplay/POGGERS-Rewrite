@@ -3,30 +3,7 @@ import random
 import io
 import math
 import colorsys
-import urllib
 import discord
-
-async def spin_wheel(ctx, game_number, boardlist):
-    """General function to spin a wheel for a Mario Party game."""
-    selected_board, gif_io, final_img_io = generate_wheel_gif(boardlist)
-    boardParsed = urllib.parse.quote(selected_board)
-
-    gif_file = discord.File(gif_io, "spinning_wheel.gif")
-    message = await ctx.respond(file=gif_file)
-
-    await asyncio.sleep(5)
-    await message.delete()
-
-    github_image_url = f"https://raw.githubusercontent.com/MarioPartyNetplay/Poggers-Rewrite/master/boards/{game_number.upper()}/{boardParsed}.png"
-
-    final_image_file = discord.File(final_img_io, "final_wheel.png")
-    await ctx.send(file=final_image_file)
-
-    result_embed = discord.Embed(title=f"\U0001F389 The wheel landed on: {selected_board}!", colour=0x98FB98)
-    result_embed.set_image(url=github_image_url)
-    result_embed.set_footer(text=f"Ran by: {ctx.author} • Yours truly, Poggers")
-
-    await ctx.send(embed=result_embed)
 
 def generate_wheel_gif(boardList):
     """Generates a spinning GIF and a final static wheel image with vibrant colors."""
@@ -151,33 +128,56 @@ def generate_vibrant_colors(num_colors):
 def add_text_to_slice(draw, text, angle_rad, size, bg_color):
     """Positions text correctly inside each wedge with appropriate contrast."""
     try:
-        # Try to load a TrueType font if available
-        font = ImageFont.truetype("arial.ttf", 12)
-    except IOError:
-        # Fallback to default font
-        font = ImageFont.load_default()
+        # Try different common font locations
+        font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 16)
+    except:
+        try:
+            font = ImageFont.truetype("arial.ttf", 16)
+        except:
+            try:
+                font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 16)
+            except:
+                # Fallback to default font
+                font = ImageFont.load_default()
     
     # Calculate text position based on angle
     center_x, center_y = size // 2, size // 2
-    radius = size // 3  # Reduce radius to keep text more centered in wedges
+    radius = size // 2.7  # Position text at optimal distance from center
     
     # Position text along the radius
     text_x = center_x + int(radius * math.cos(angle_rad))
     text_y = center_y + int(radius * math.sin(angle_rad))
     
     # Calculate text rotation angle (in degrees)
-    rotation_angle = math.degrees(angle_rad)
-    if 90 < rotation_angle < 270:
-        # Flip text for better readability when upside down
-        rotation_angle += 180
+    # Add 90 degrees so text is tangent to the circle
+    rotation_angle = math.degrees(angle_rad) + 90
     
     # Determine text color based on background brightness for contrast
     r, g, b = bg_color
     brightness = (0.299 * r + 0.587 * g + 0.114 * b) / 255
     text_color = "black" if brightness > 0.5 else "white"
     
-    # Draw the text with proper rotation
-    draw.text((text_x, text_y), text, fill=text_color, font=font, anchor="mm" if hasattr(draw, 'textbbox') else None)
+    # Create a temporary image for rotated text with extra padding
+    # Get text size
+    bbox = draw.textbbox((0, 0), text, font=font)
+    text_width = bbox[2] - bbox[0]
+    text_height = bbox[3] - bbox[1]
+    
+    # Create temp image for text with larger padding
+    padding = 40
+    txt_img = Image.new('RGBA', (text_width + padding, text_height + padding), (255, 255, 255, 0))
+    txt_draw = ImageDraw.Draw(txt_img)
+    txt_draw.text((padding // 2, padding // 2), text, fill=text_color, font=font)
+    
+    # Rotate the text image - negative angle to rotate correctly
+    txt_img = txt_img.rotate(-rotation_angle, expand=True, resample=Image.BICUBIC)
+    
+    # Calculate position to paste (centered)
+    paste_x = text_x - txt_img.width // 2
+    paste_y = text_y - txt_img.height // 2
+    
+    # Paste the rotated text onto the main image
+    draw._image.paste(txt_img, (paste_x, paste_y), txt_img)
 
 def draw_arrow(draw, size):
     """Draws an arrow at the top of the wheel."""
