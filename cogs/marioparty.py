@@ -418,8 +418,15 @@ class MarioParty(commands.Cog):
     @commands.slash_command(name='wheel', description="Spin a wheel with custom options")
     async def wheel(self, ctx):
         """Shows a modal to input wheel options."""
-        modal = WheelModal(self)
-        await ctx.send_modal(modal)
+        print("\n[DEBUG] /wheel command was typed and triggered!")
+        try:
+            modal = WheelModal(self)
+            await ctx.send_modal(modal)
+            print("[DEBUG] Dialog box sent to user successfully!")
+        except Exception as e:
+            print(f"[ERROR] Failed to open dialog box: {e}")
+            import traceback
+            traceback.print_exc()
 
 
 class WheelModal(Modal):
