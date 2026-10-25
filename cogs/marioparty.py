@@ -920,11 +920,13 @@ class WheelModal(Modal):
         # Defer the response since we'll be sending multiple messages
         await interaction.response.defer()
         
+# Create a minimal context-like object for compatibility
         class InteractionContext:
             def __init__(self, inter):
                 self.interaction = inter
                 self.author = inter.user
                 self.channel = inter.channel
+                self.followup = inter.followup  # <--- THIS WAS MISSING
                 
             async def defer(self):
                 """Dummy defer since interaction is already deferred by the modal."""
@@ -936,7 +938,7 @@ class WheelModal(Modal):
             
             async def send(self, content=None, **kwargs):
                 """Send message using followup."""
-                return await self.interaction.followup.send(content=content, **kwargs)        
+                return await self.interaction.followup.send(content=content, **kwargs)
         
         ctx = InteractionContext(interaction)
         await self.cog.spin_wheel_and_show_result(ctx, filter_options, f"🎉 The wheel landed on!", "custom wheel")
