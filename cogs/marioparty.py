@@ -418,15 +418,8 @@ class MarioParty(commands.Cog):
     @commands.slash_command(name='wheel', description="Spin a wheel with custom options")
     async def wheel(self, ctx):
         """Shows a modal to input wheel options."""
-        print("\n[DEBUG] /wheel command was typed and triggered!")
-        try:
-            modal = WheelModal(self)
-            await ctx.send_modal(modal)
-            print("[DEBUG] Dialog box sent to user successfully!")
-        except Exception as e:
-            print(f"[ERROR] Failed to open dialog box: {e}")
-            import traceback
-            traceback.print_exc()
+        modal = WheelModal(self)
+        await ctx.send_modal(modal)
 
 
 class WheelModal(Modal):
@@ -905,69 +898,36 @@ class WheelModal(Modal):
         )
         self.add_item(self.options_input)
     
-async def on_submit(self, interaction: discord.Interaction):
-        """Handle modal submission with debugging."""
-        print("\n--- [DEBUG] Modal Submitted ---")
-        try:
-            options_text = self.options_input.value.strip()
-            
-            if not options_text:
-                await interaction.response.send_message("❌ Please provide at least one option!", ephemeral=True)
-                return
-            
-            filter_options = [option.strip() for option in options_text.split(',') if option.strip()]
-            print(f"[DEBUG] Options parsed: {filter_options}")
-            
-            if len(filter_options) < 2:
-                await interaction.response.send_message("❌ Please provide at least 2 options for the wheel!", ephemeral=True)
-                return
-            
-            print("[DEBUG] Attempting to defer interaction...")
-            await interaction.response.defer()
-            print("[DEBUG] Interaction deferred successfully.")
-            
-            class InteractionContext:
-                def __init__(self, inter):
-                    self.interaction = inter
-                    self.author = inter.user
-                    self.channel = inter.channel
-                    self.followup = inter.followup
-                    
-                async def defer(self):
-                    print("[DEBUG] ctx.defer() called (dummy pass)")
-                    pass
-                    
-                async def respond(self, content=None, **kwargs):
-                    print("[DEBUG] ctx.respond() called")
-                    return await self.interaction.followup.send(content=content, **kwargs)
-                
-                async def send(self, content=None, **kwargs):
-                    print("[DEBUG] ctx.send() called")
-                    return await self.interaction.followup.send(content=content, **kwargs)
-            
-            ctx = InteractionContext(interaction)
-            print("[DEBUG] Calling spin_wheel_and_show_result...")
-            await self.cog.spin_wheel_and_show_result(ctx, filter_options, "🎉 The wheel landed on!", "custom wheel")
-            print("[DEBUG] Command completed successfully!")
-            
-        except Exception as e:
-            print(f"\n[ERROR] Modal crashed: {e}")
-            import traceback
-            traceback.print_exc()
-            
-            # Try to send the error to Discord so you can see it in chat
-            try:
-                await interaction.followup.send(f"⚠️ A code error occurred: `{e}`\nCheck the bot's terminal for the full traceback.", ephemeral=True)
-            except:
-                pass
-
-        # Create a minimal context-like object for compatibility
+    # In Pycord, this MUST be named "callback", not "on_submit"!
+    async def callback(self, interaction: discord.Interaction):
+        """Handle modal submission."""
+        options_text = self.options_input.value.strip()
+        
+        if not options_text:
+            await interaction.response.send_message("❌ Please provide at least one option!", ephemeral=True)
+            return
+        
+        # Split by comma and clean up
+        filter_options = [option.strip() for option in options_text.split(',') if option.strip()]
+        
+        if not filter_options:
+            await interaction.response.send_message("❌ Please provide at least one valid option!", ephemeral=True)
+            return
+        
+        if len(filter_options) < 2:
+            await interaction.response.send_message("❌ Please provide at least 2 options for the wheel!", ephemeral=True)
+            return
+        
+        # Defer the response immediately so Discord knows we are processing
+        await interaction.response.defer()
+        
+        # Create a minimal context-like object for compatibility with your existing function
         class InteractionContext:
             def __init__(self, inter):
                 self.interaction = inter
                 self.author = inter.user
                 self.channel = inter.channel
-                self.followup = inter.followup  # <--- THIS WAS MISSING
+                self.followup = inter.followup
                 
             async def defer(self):
                 """Dummy defer since interaction is already deferred by the modal."""
@@ -983,6 +943,5 @@ async def on_submit(self, interaction: discord.Interaction):
         
         ctx = InteractionContext(interaction)
         await self.cog.spin_wheel_and_show_result(ctx, filter_options, f"🎉 The wheel landed on!", "custom wheel")
-
 def setup(bot):
     bot.add_cog(MarioParty(bot))
